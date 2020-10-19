@@ -1,5 +1,6 @@
 <?php
-namespace RdfDatatype\DataType;
+
+namespace DataTypeRdf\DataType;
 
 use Omeka\Api\Adapter\AbstractEntityAdapter;
 use Omeka\Api\Representation\ValueRepresentation;
@@ -10,11 +11,11 @@ use Zend\View\Renderer\PhpRenderer;
 /**
  * @url https://www.w3.org/TR/xmlschema11-2/#boolean
  */
-class XsdBoolean extends AbstractRdfDatatype
+class Boolean extends AbstractDataTypeRdf
 {
     public function getName()
     {
-        return 'xsd:boolean';
+        return 'boolean';
     }
 
     public function getLabel()

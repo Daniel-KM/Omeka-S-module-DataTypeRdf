@@ -1,5 +1,6 @@
 <?php
-namespace RdfDatatype\DataType;
+
+namespace DataTypeRdf\DataType;
 
 use Omeka\Api\Adapter\AbstractEntityAdapter;
 use Omeka\Entity\Value;
@@ -9,16 +10,16 @@ use Zend\View\Renderer\PhpRenderer;
 /**
  * @url https://www.w3.org/TR/rdf11-concepts/#section-XMLLiteral
  */
-class RdfXmlLiteral extends AbstractRdfDatatype
+class Xml extends AbstractDataTypeRdf
 {
     public function getName()
     {
-        return 'rdf:XMLLiteral';
+        return 'xml';
     }
 
     public function getLabel()
     {
-        return 'Xml';
+        return 'xml';
     }
 
     public function form(PhpRenderer $view)

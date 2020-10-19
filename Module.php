@@ -1,6 +1,6 @@
 <?php
 /**
- * RdfDatatype
+ * DataTypeRdf
  *
  * Implement the main W3C RDF datatypes (html, xml, boolean, integer, decimal
  * and date/time) in order to simplify user input and to give more semanticity
@@ -32,7 +32,7 @@
  * The fact that you are presently reading this means that you have had
  * knowledge of the CeCILL license and that you accept its terms.
  */
-namespace RdfDatatype;
+namespace DataTypeRdf;
 
 use Omeka\Module\AbstractModule;
 use Zend\EventManager\Event;
@@ -76,7 +76,7 @@ class Module extends AbstractModule
     {
         $view = $event->getTarget();
         $settings = $this->getServiceLocator()->get('Omeka\Settings');
-        $rdfDatatypes = $settings->get('rdfdatatype_datatypes', []);
-        $view->headScript()->appendScript('var rdfDatatypes = ' . json_encode($rdfDatatypes, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . ';');
+        $dataTypeRdfs = $settings->get('datatyperdf_datatypes', []);
+        $view->headScript()->appendScript('var dataTypeRdfs = ' . json_encode($dataTypeRdfs, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . ';');
     }
 }

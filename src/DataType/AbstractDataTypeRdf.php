@@ -1,5 +1,6 @@
 <?php
-namespace RdfDatatype\DataType;
+
+namespace DataTypeRdf\DataType;
 
 use Omeka\Api\Adapter\AbstractEntityAdapter;
 use Omeka\Api\Representation\ValueRepresentation;
@@ -7,18 +8,18 @@ use Omeka\DataType\AbstractDataType;
 use Omeka\Entity\Value;
 use Zend\View\Renderer\PhpRenderer;
 
-abstract class AbstractRdfDatatype extends AbstractDataType
+abstract class AbstractDataTypeRdf extends AbstractDataType
 {
     public function getOptgroupLabel()
     {
-        return 'RDF Datatype'; // @translate
+        return 'Data Type RDF'; // @translate
     }
 
     public function prepareForm(PhpRenderer $view)
     {
         $assetUrl = $view->plugin('assetUrl');
-        $view->headLink()->appendStylesheet($assetUrl('css/rdf-datatype.css', 'RdfDatatype'));
-        $view->headScript()->appendFile($assetUrl('js/rdf-datatype.js', 'RdfDatatype'), 'text/javascript', ['defer' => 'defer']);
+        $view->headLink()->appendStylesheet($assetUrl('css/data-type-rdf.css', 'DataTypeRdf'));
+        $view->headScript()->appendFile($assetUrl('js/data-type-rdf.js', 'DataTypeRdf'), 'text/javascript', ['defer' => 'defer']);
     }
 
     public function hydrate(array $valueObject, Value $value, AbstractEntityAdapter $adapter)

@@ -106,7 +106,7 @@ msgstr ""
 msgid "Input a month and a day normalized as rdf: --12-25"
 msgstr ""
 
-#: src/DataType/AbstractRdfDatatype.php:14
+#: src/DataType/AbstractDataTypeRdf.php:14
 msgid "RDF Datatype"
 msgstr ""
 

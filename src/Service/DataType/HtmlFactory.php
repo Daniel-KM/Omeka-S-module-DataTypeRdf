@@ -1,19 +1,20 @@
 <?php
-namespace RdfDatatype\Service\DataType;
+
+namespace DataTypeRdf\Service\DataType;
 
 use Interop\Container\ContainerInterface;
-use RdfDatatype\DataType\RdfHtml;
+use DataTypeRdf\DataType\Html;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
-class RdfHtmlFactory implements FactoryInterface
+class HtmlFactory implements FactoryInterface
 {
     /**
      * Create the service for RdfHtml datatype.
      *
-     * @return RdfHtml
+     * @return Html
      */
     public function __invoke(ContainerInterface $services, $requestedName, array $options = null)
     {
-        return new RdfHtml($services->get('Omeka\HtmlPurifier'));
+        return new Html($services->get('Omeka\HtmlPurifier'));
     }
 }

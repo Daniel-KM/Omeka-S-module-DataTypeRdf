@@ -1,5 +1,6 @@
 <?php
-namespace RdfDatatype\DataType;
+
+namespace DataTypeRdf\DataType;
 
 use Omeka\Api\Adapter\AbstractEntityAdapter;
 use Omeka\Api\Representation\ValueRepresentation;
@@ -11,7 +12,7 @@ use Zend\View\Renderer\PhpRenderer;
 /**
  * @url https://www.w3.org/TR/rdf11-concepts/#section-html
  */
-class RdfHtml extends AbstractRdfDatatype
+class Html extends AbstractDataTypeRdf
 {
     /**
      * @var HtmlPurifier
@@ -25,7 +26,7 @@ class RdfHtml extends AbstractRdfDatatype
 
     public function getName()
     {
-        return 'rdf:HTML';
+        return 'html';
     }
 
     public function getLabel()
