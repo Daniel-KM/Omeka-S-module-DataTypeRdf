@@ -25,11 +25,11 @@ class Boolean extends AbstractDataTypeRdf
 
     public function form(PhpRenderer $view)
     {
-        $element = new Element\Checkbox('xsd-boolean-input');
+        $element = new Element\Checkbox('boolean-input');
         $element->setAttributes([
-            'class' => 'input-value to-require xsd-boolean-input',
+            'class' => 'input-value to-require boolean-input',
         ]);
-        $hidden = new Element\Hidden('xsd-boolean');
+        $hidden = new Element\Hidden('boolean');
         $hidden->setAttributes([
             'data-value-key' => '@value',
         ]);

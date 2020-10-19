@@ -19,18 +19,20 @@ class Xml extends AbstractDataTypeRdf
 
     public function getLabel()
     {
-        return 'xml';
+        return 'Xml';
     }
 
     public function form(PhpRenderer $view)
     {
-        $element = new Element\Textarea('rdf-xml-literal');
+        $element = new Element\Textarea('xml');
         $element->setAttributes([
-            'class' => 'value to-require rdf-xml-literal',
+            'class' => 'value to-require xml',
             'data-value-key' => '@value',
+            /*
             'placeholder' => '<oai_dcterms:dcterms>
     <dcterms:title>Resource Description Framework (RDF)</dcterms:title>
 </oai_dcterms:dcterms>',
+            */
         ]);
         return $view->formTextarea($element);
     }

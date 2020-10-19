@@ -39,11 +39,11 @@ class Html extends AbstractDataTypeRdf
         // CKEditor is not enabled for item sets neither medias (the helper
         // avoids to reload it for items).
         $view->ckEditor();
-        $element = new Element\Textarea('rdf-html');
+        $element = new Element\Textarea('html');
         $element->setAttributes([
-            'class' => 'value to-require rdf-html wyziwyg',
+            'class' => 'value to-require html wyziwyg',
             'data-value-key' => '@value',
-            'placeholder' => '<p>input <em>your</em> <strong>html</strong> content</p>', // @translate
+            // 'placeholder' => '<p>input <em>your</em> <strong>html</strong> content</p>', // @translate
         ]);
 
         $translate = $view->plugin('translate');

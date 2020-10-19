@@ -22,10 +22,4 @@ return [
             ],
         ],
     ],
-    'js_translate_strings' => [
-        'Decimal', // @translate
-        'Number', // @translate
-        'Please enter a valid decimal number.', // @translate
-        'True/False', // @translate
-    ],
 ];
