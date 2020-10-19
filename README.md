@@ -1,6 +1,9 @@
 RDF Datatype (module for Omeka S) [archived]
 =================================
 
+> __New versions of this module and support for Omeka S version 3.0 and above
+> are available on [GitLab], which seems to respect users and privacy better.__
+
 > **IMPORTANT**
 > This module is deprecated and replaced by the modules [Data Type RDF], that
 > manages html, xml, and boolean, and [Numeric Data Types], that manages integer
@@ -142,4 +145,5 @@ Copyright
 [FSF]: https://www.fsf.org
 [OSI]: http://opensource.org
 [MIT]: https://github.com/sandywalker/webui-popover/blob/master/LICENSE.txt
+[GitLab]: https://gitlab.com/Daniel-KM
 [Daniel-KM]: https://github.com/Daniel-KM "Daniel Berthereau"
