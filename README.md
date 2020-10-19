@@ -91,7 +91,7 @@ your archives regularly so you can roll back if needed.
 Troubleshooting
 ---------------
 
-See online issues on the [module issues] page on GitHub.
+See online issues on the [module issues] page on GitLab.
 
 
 License
@@ -130,20 +130,19 @@ Copyright
 * Copyright Daniel Berthereau, 2018
 
 
-[RDF Datatype]: https://github.com/Daniel-KM/Omeka-S-module-RdfDatatype
+[RDF Datatype]: https://gitlab.com/Daniel-KM/Omeka-S-module-RdfDatatype
 [Omeka S]: https://omeka.org/s
-[Data Type RDF]: https://gitlab.com/Daniel-KM/Omeka-S-module-DataTypeRdf
 [Numeric Data Types]: https://github.com/omeka-s-modules/NumericDataTypes
 [RDF datatypes]: https://www.w3.org/TR/rdf11-concepts/#section-Datatypes
 [XSD datatypes]: https://www.w3.org/TR/xmlschema11-2
 [W3C]: https://www.w3.org
 [installing a module]: http://dev.omeka.org/docs/s/user-manual/modules/#installing-modules
 [Omeka S issue #1241]: https://github.com/omeka/omeka-s/issues/1241
-[module issues]: https://github.com/Daniel-KM/Omeka-S-module-RdfDatatype/issues
+[module issues]: https://gitlab.com/Daniel-KM/Omeka-S-module-RdfDatatype/-/issues
 [CeCILL v2.1]: https://www.cecill.info/licences/Licence_CeCILL_V2.1-en.html
 [GNU/GPL]: https://www.gnu.org/licenses/gpl-3.0.html
 [FSF]: https://www.fsf.org
 [OSI]: http://opensource.org
 [MIT]: https://github.com/sandywalker/webui-popover/blob/master/LICENSE.txt
 [GitLab]: https://gitlab.com/Daniel-KM
-[Daniel-KM]: https://github.com/Daniel-KM "Daniel Berthereau"
+[Daniel-KM]: https://gitlab.com/Daniel-KM "Daniel Berthereau"
