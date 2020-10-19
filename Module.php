@@ -36,6 +36,7 @@ namespace DataTypeRdf;
 
 use Laminas\EventManager\Event;
 use Laminas\EventManager\SharedEventManagerInterface;
+use Laminas\ServiceManager\ServiceLocatorInterface;
 use Omeka\Module\AbstractModule;
 
 class Module extends AbstractModule
@@ -43,6 +44,13 @@ class Module extends AbstractModule
     public function getConfig()
     {
         return include __DIR__ . '/config/module.config.php';
+    }
+
+    public function install(ServiceLocatorInterface $services)
+    {
+        if ($services->get('Omeka\ModuleManager')->getModule('RdfDatatype')) {
+            require_once __DIR__ . '/data/scripts/upgrade_from_rdfdatatype.php';
+        }
     }
 
     public function attachListeners(SharedEventManagerInterface $sharedEventManager): void
