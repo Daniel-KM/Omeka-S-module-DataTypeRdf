@@ -6,8 +6,8 @@ use Omeka\Api\Adapter\AbstractEntityAdapter;
 use Omeka\Api\Representation\ValueRepresentation;
 use Omeka\Entity\Value;
 use Omeka\Stdlib\HtmlPurifier;
-use Zend\Form\Element;
-use Zend\View\Renderer\PhpRenderer;
+use Laminas\Form\Element;
+use Laminas\View\Renderer\PhpRenderer;
 
 /**
  * @url https://www.w3.org/TR/rdf11-concepts/#section-html

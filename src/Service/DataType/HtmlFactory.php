@@ -4,7 +4,7 @@ namespace DataTypeRdf\Service\DataType;
 
 use Interop\Container\ContainerInterface;
 use DataTypeRdf\DataType\Html;
-use Zend\ServiceManager\Factory\FactoryInterface;
+use Laminas\ServiceManager\Factory\FactoryInterface;
 
 class HtmlFactory implements FactoryInterface
 {
