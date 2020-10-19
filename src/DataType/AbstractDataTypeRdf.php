@@ -1,12 +1,12 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace DataTypeRdf\DataType;
 
+use Laminas\View\Renderer\PhpRenderer;
 use Omeka\Api\Adapter\AbstractEntityAdapter;
 use Omeka\Api\Representation\ValueRepresentation;
 use Omeka\DataType\AbstractDataType;
 use Omeka\Entity\Value;
-use Laminas\View\Renderer\PhpRenderer;
 
 abstract class AbstractDataTypeRdf extends AbstractDataType
 {
@@ -15,14 +15,14 @@ abstract class AbstractDataTypeRdf extends AbstractDataType
         return 'Data Type RDF'; // @translate
     }
 
-    public function prepareForm(PhpRenderer $view)
+    public function prepareForm(PhpRenderer $view): void
     {
         $assetUrl = $view->plugin('assetUrl');
         $view->headLink()->appendStylesheet($assetUrl('css/data-type-rdf.css', 'DataTypeRdf'));
         $view->headScript()->appendFile($assetUrl('js/data-type-rdf.js', 'DataTypeRdf'), 'text/javascript', ['defer' => 'defer']);
     }
 
-    public function hydrate(array $valueObject, Value $value, AbstractEntityAdapter $adapter)
+    public function hydrate(array $valueObject, Value $value, AbstractEntityAdapter $adapter): void
     {
         $value->setValue(trim($valueObject['@value']));
         // Set defaults.

@@ -1,13 +1,13 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace DataTypeRdf\DataType;
 
+use Laminas\Form\Element;
+use Laminas\View\Renderer\PhpRenderer;
 use Omeka\Api\Adapter\AbstractEntityAdapter;
 use Omeka\Api\Representation\ValueRepresentation;
 use Omeka\Entity\Value;
 use Omeka\Stdlib\HtmlPurifier;
-use Laminas\Form\Element;
-use Laminas\View\Renderer\PhpRenderer;
 
 /**
  * @url https://www.w3.org/TR/rdf11-concepts/#section-html
@@ -59,7 +59,7 @@ class Html extends AbstractDataTypeRdf
             && $this->htmlPurifier->purify(trim($valueObject['@value'])) !== '';
     }
 
-    public function hydrate(array $valueObject, Value $value, AbstractEntityAdapter $adapter)
+    public function hydrate(array $valueObject, Value $value, AbstractEntityAdapter $adapter): void
     {
         $val = $this->htmlPurifier->purify(trim($valueObject['@value']));
         $value->setValue($val);

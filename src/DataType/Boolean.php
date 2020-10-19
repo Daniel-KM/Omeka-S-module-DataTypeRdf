@@ -1,12 +1,12 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace DataTypeRdf\DataType;
 
+use Laminas\Form\Element;
+use Laminas\View\Renderer\PhpRenderer;
 use Omeka\Api\Adapter\AbstractEntityAdapter;
 use Omeka\Api\Representation\ValueRepresentation;
 use Omeka\Entity\Value;
-use Laminas\Form\Element;
-use Laminas\View\Renderer\PhpRenderer;
 
 /**
  * @url https://www.w3.org/TR/xmlschema11-2/#boolean
@@ -45,7 +45,7 @@ class Boolean extends AbstractDataTypeRdf
             && in_array(trim($valueObject['@value']), ['0', '1', 'false', 'true'], true);
     }
 
-    public function hydrate(array $valueObject, Value $value, AbstractEntityAdapter $adapter)
+    public function hydrate(array $valueObject, Value $value, AbstractEntityAdapter $adapter): void
     {
         $val = in_array(trim($valueObject['@value']), ['1', 'true'], true) ? '1' : '0';
         $value->setValue($val);

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * DataTypeRdf
  *
@@ -34,9 +34,9 @@
  */
 namespace DataTypeRdf;
 
-use Omeka\Module\AbstractModule;
 use Laminas\EventManager\Event;
 use Laminas\EventManager\SharedEventManagerInterface;
+use Omeka\Module\AbstractModule;
 
 class Module extends AbstractModule
 {
@@ -45,7 +45,7 @@ class Module extends AbstractModule
         return include __DIR__ . '/config/module.config.php';
     }
 
-    public function attachListeners(SharedEventManagerInterface $sharedEventManager)
+    public function attachListeners(SharedEventManagerInterface $sharedEventManager): void
     {
         $controllers = [
             'Omeka\Controller\Admin\Item',
@@ -72,7 +72,7 @@ class Module extends AbstractModule
      *
      * @param Event $event
      */
-    public function prepareResourceForm(Event $event)
+    public function prepareResourceForm(Event $event): void
     {
         $view = $event->getTarget();
         $settings = $this->getServiceLocator()->get('Omeka\Settings');

@@ -1,9 +1,9 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace DataTypeRdf\Service\DataType;
 
-use Interop\Container\ContainerInterface;
 use DataTypeRdf\DataType\Html;
+use Interop\Container\ContainerInterface;
 use Laminas\ServiceManager\Factory\FactoryInterface;
 
 class HtmlFactory implements FactoryInterface

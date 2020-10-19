@@ -1,11 +1,11 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace DataTypeRdf\DataType;
 
-use Omeka\Api\Adapter\AbstractEntityAdapter;
-use Omeka\Entity\Value;
 use Laminas\Form\Element;
 use Laminas\View\Renderer\PhpRenderer;
+use Omeka\Api\Adapter\AbstractEntityAdapter;
+use Omeka\Entity\Value;
 
 /**
  * @url https://www.w3.org/TR/rdf11-concepts/#section-XMLLiteral
@@ -42,7 +42,7 @@ class Xml extends AbstractDataTypeRdf
         return isset($valueObject['@value']);
     }
 
-    public function hydrate(array $valueObject, Value $value, AbstractEntityAdapter $adapter)
+    public function hydrate(array $valueObject, Value $value, AbstractEntityAdapter $adapter): void
     {
         $value->setValue(trim($valueObject['@value']));
         // Set defaults.
