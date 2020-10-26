@@ -1,46 +1,26 @@
-RDF Datatype (module for Omeka S) [archived]
-=================================
+Data Type RDF (module for Omeka S)
+==================================
 
 > __New versions of this module and support for Omeka S version 3.0 and above
 > are available on [GitLab], which seems to respect users and privacy better.__
 
-> **IMPORTANT**
-> This module is deprecated and replaced by the modules [Data Type RDF], that
-> manages html, xml, and boolean, and [Numeric Data Types], that manages integer
-> and date/time. Install them for an automatic upgrade. Other data types are
-> converted into literal.
-
-
-[RDF Datatype] is a module for [Omeka S] that implements the main [RDF datatypes]
-and [XSD datatypes] that are recommended by the World Wide Web consortium [W3C]
-in order to simplify user input and to give a better semanticity to the values
-of the properties.
-
-Default Omeka datatypes:
-- text
-- Omeka resource (item, item set, media)
-- uri
+[Data Type RDF] is a module for [Omeka S] that implements some [RDF datatypes]
+and an [XSD datatype] recommended by the World Wide Web consortium [W3C] in
+order to simplify user input and to give a better semanticity to the values of
+the properties.
 
 Added rdf and xsd datatypes:
 - [`rdf:HTML`](https://www.w3.org/TR/rdf11-concepts/#section-html): an html fragment
 - [`rdf:XMLLiteral`](https://www.w3.org/TR/rdf11-concepts/#section-XMLLiteral): an xml fragment
 - [`xsd:boolean`](https://www.w3.org/TR/xmlschema11-2/#boolean): true or false
-- [`xsd:integer`](https://www.w3.org/TR/xmlschema11-2/#integer): a simple number
-- [`xsd:decimal`](https://www.w3.org/TR/xmlschema11-2/#decimal): a decimal number
-- [`xsd:dateTime`](https://www.w3.org/TR/xmlschema11-2/#dateTime): a full ISO 8601 date time
-- [`xsd:date`](https://www.w3.org/TR/xmlschema11-2/#date): an ISO 8601 date
-- [`xsd:time`](https://www.w3.org/TR/xmlschema11-2/#time): an ISO 8601 time
-- [`xsd:gYear`](https://www.w3.org/TR/xmlschema11-2/#gYear): a Gregorian year
-- [`xsd:gYearMonth`](https://www.w3.org/TR/xmlschema11-2/#gYearMonth): a Gregorian year and month
-- [`xsd:gMonth`](https://www.w3.org/TR/xmlschema11-2/#gMonth): a Gregorian month
-- [`xsd:gMonthDay`](https://www.w3.org/TR/xmlschema11-2/#gMonthDay): a Gregorian month and day
-- [`xsd:gDay`](https://www.w3.org/TR/xmlschema11-2/#gDay): a Gregorian day of month
+
+Number and date time data types can be managed with module [Numeric Data Types].
 
 
 Installation
 ------------
 
-Uncompress files and rename plugin folder `RdfDatatype`.
+Uncompress files and rename plugin folder `DataTypeRdf`.
 
 See general end user documentation for [Installing a module] and follow the
 config instructions.
@@ -49,34 +29,19 @@ config instructions.
 Usage
 -----
 
-The data types that are set in the config of the module are automatically
-available in all the resource forms. It is advisable to avoid to overload the
-user interface.
-
-In all cases, it is recommended to create resources templates in order to
-simplify the use of the datatypes and to normalize all the metadata of all the
-records.
-
-Note: the datatypes `xsd:gMonth`, `xsd:gMonthDay` and `xsd:gDay` may not be
-intuitive. To be compliant with the standard, they should be prepended with `--`
-for months, and `---` for day. They are not added automatically. Furthermore,
-sparql cannot request any of the the Gregorian datatypes.
+The data types are automatically available through the resource templates. It is
+not recommended to use too many data types by property. One to four types are
+enough in most of the cases.
 
 
 TODO
 ----
 
-- Use a javascript for xsd:dateTime.
-- Use a purifier for rdf:XMLLiteral.
-- Add a batch process to change the type of a property for a list of resources.
+- Simplify search ([Omeka S issue #1241]).
 - Add xsd:token or a derivative for standard or custom enumerations (language, etc.).
 - Add xsd:anyURI for uris.
-- Normalize Zend form for xsd:time, that requires seconds.
-- Simplify search ([Omeka S issue #1241]).
 - Manage restrictions via the resource templates (default value for boolean,
   range, default tokens, with or without seconds, css for html, xsl for xml…).
-- Allow to attach multiple selected datatypes to resource templates (in
-  particular for subjects).
 
 
 Warning
@@ -127,18 +92,18 @@ of the CeCILL license and that you accept its terms.
 Copyright
 ---------
 
-* Copyright Daniel Berthereau, 2018
+* Copyright Daniel Berthereau, 2018-2020
 
 
-[RDF Datatype]: https://gitlab.com/Daniel-KM/Omeka-S-module-RdfDatatype
+[Data Type RDF]: https://gitlab.com/Daniel-KM/Omeka-S-module-DataTypeRdf
 [Omeka S]: https://omeka.org/s
 [Numeric Data Types]: https://github.com/omeka-s-modules/NumericDataTypes
 [RDF datatypes]: https://www.w3.org/TR/rdf11-concepts/#section-Datatypes
-[XSD datatypes]: https://www.w3.org/TR/xmlschema11-2
+[XSD datatype]: https://www.w3.org/TR/xmlschema11-2
 [W3C]: https://www.w3.org
 [installing a module]: http://dev.omeka.org/docs/s/user-manual/modules/#installing-modules
 [Omeka S issue #1241]: https://github.com/omeka/omeka-s/issues/1241
-[module issues]: https://gitlab.com/Daniel-KM/Omeka-S-module-RdfDatatype/-/issues
+[module issues]: https://gitlab.com/Daniel-KM/Omeka-S-module-DataTypeRdf/-/issues
 [CeCILL v2.1]: https://www.cecill.info/licences/Licence_CeCILL_V2.1-en.html
 [GNU/GPL]: https://www.gnu.org/licenses/gpl-3.0.html
 [FSF]: https://www.fsf.org
