@@ -5,6 +5,7 @@ namespace DataTypeRdf\DataType;
 use Laminas\Form\Element;
 use Laminas\View\Renderer\PhpRenderer;
 use Omeka\Api\Adapter\AbstractEntityAdapter;
+use Omeka\Api\Representation\ValueRepresentation;
 use Omeka\Entity\Value;
 
 /**
@@ -52,5 +53,10 @@ class Xml extends AbstractDataTypeRdf
         $value->setLang(null);
         $value->setUri(null);
         $value->setValueResource(null);
+    }
+
+    public function getFulltextText(PhpRenderer $view, ValueRepresentation $value)
+    {
+        return strip_tags((string) $value->value());
     }
 }

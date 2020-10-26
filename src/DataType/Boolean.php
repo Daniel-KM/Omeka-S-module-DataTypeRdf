@@ -61,4 +61,9 @@ class Boolean extends AbstractDataTypeRdf
             ? $view->translate('true') // @translate
             : $view->translate('false'); // @translate
     }
+
+    public function getFulltextText(PhpRenderer $view, ValueRepresentation $value)
+    {
+        return $this->render($view, $value);
+    }
 }

@@ -77,6 +77,11 @@ class Html extends AbstractDataTypeRdf
         $value->setValueResource(null);
     }
 
+    public function getFulltextText(PhpRenderer $view, ValueRepresentation $value)
+    {
+        return strip_tags((string) $value->value());
+    }
+
     public function getJsonLd(ValueRepresentation $value)
     {
         $jsonLd = ['@value' => $value->value()];
