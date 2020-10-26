@@ -66,4 +66,12 @@ class Boolean extends AbstractDataTypeRdf
     {
         return $this->render($view, $value);
     }
+
+    public function getJsonLd(ValueRepresentation $value)
+    {
+        return [
+            '@value' => (bool) (int) $value->value(),
+            '@type' => 'http://www.w3.org/2001/XMLSchema#boolean',
+        ];
+    }
 }

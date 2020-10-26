@@ -84,7 +84,10 @@ class Html extends AbstractDataTypeRdf
 
     public function getJsonLd(ValueRepresentation $value)
     {
-        $jsonLd = ['@value' => $value->value()];
+        $jsonLd = [
+            '@value' => $value->value(),
+            '@type' => 'http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML',
+        ];
         $lang = $value->lang();
         if ($lang) {
             $jsonLd['@language'] = $lang;
