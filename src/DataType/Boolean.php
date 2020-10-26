@@ -9,7 +9,7 @@ use Omeka\Api\Representation\ValueRepresentation;
 use Omeka\Entity\Value;
 
 /**
- * @url https://www.w3.org/TR/xmlschema11-2/#boolean
+ * @link https://www.w3.org/TR/xmlschema11-2/#boolean
  */
 class Boolean extends AbstractDataTypeRdf
 {
@@ -41,7 +41,7 @@ class Boolean extends AbstractDataTypeRdf
     {
         return isset($valueObject['@value'])
             // See the lexical space of xsd:boolean.
-            // @url https://www.w3.org/TR/xmlschema11-2/#f-booleanLexmap
+            // @link https://www.w3.org/TR/xmlschema11-2/#f-booleanLexmap
             && in_array(trim($valueObject['@value']), ['0', '1', 'false', 'true'], true);
     }
 

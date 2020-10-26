@@ -9,7 +9,7 @@ use Omeka\Api\Representation\ValueRepresentation;
 use Omeka\Entity\Value;
 
 /**
- * @url https://www.w3.org/TR/rdf11-concepts/#section-XMLLiteral
+ * @link https://www.w3.org/TR/rdf11-concepts/#section-XMLLiteral
  */
 class Xml extends AbstractDataTypeRdf
 {

@@ -10,7 +10,7 @@ use Omeka\Entity\Value;
 use Omeka\Stdlib\HtmlPurifier;
 
 /**
- * @url https://www.w3.org/TR/rdf11-concepts/#section-html
+ * @link https://www.w3.org/TR/rdf11-concepts/#section-html
  */
 class Html extends AbstractDataTypeRdf
 {
