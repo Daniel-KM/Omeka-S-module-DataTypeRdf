@@ -3,44 +3,44 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-26 00:00+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2020-10-26 00:00+0000\n"
+"Last-Translator: Daniel Berthereau <Daniel.fr@Berthereau.net>\n"
+"Language-Team: \n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.1\n"
 
 #: data/scripts/upgrade_from_rdfdatatype.php:278
 msgid "The module RdfDatatype was automatically uninstalled."
-msgstr ""
+msgstr "Le module RdfDatatype a été désinstallé automatiquement."
 
 #: data/scripts/upgrade_from_rdfdatatype.php:284
 msgid "The module RdfDatatype cannot be automatically uninstalled."
-msgstr ""
+msgstr "Le module RdfDatatype ne peut pas être automatiquement désinstallé."
 
 #: src/DataType/Boolean.php:61
 msgid "true"
-msgstr ""
+msgstr "vrai"
 
 #: src/DataType/Boolean.php:62
 msgid "false"
-msgstr ""
+msgstr "faux"
 
 #: src/DataType/Html.php:45
 msgid "@value"
-msgstr ""
+msgstr "@value"
 
 #: src/DataType/AbstractDataTypeRdf.php:15
 msgid "Data Type RDF"
-msgstr ""
+msgstr "Data Type RDF"
 
 #: src/DataType/Boolean.php:23
 msgid "Boolean"
-msgstr ""
+msgstr "Booléen"
