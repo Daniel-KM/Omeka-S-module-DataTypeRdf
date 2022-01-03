@@ -33,12 +33,12 @@ $sql = <<<'SQL'
 SELECT COUNT(`id`) FROM `value`
 WHERE type IN ("rdf:HTML", "rdf:XMLLiteral", "xsd:boolean", "xsd:date", "xsd:dateTime", "xsd:decimal", "xsd:gDay", "xsd:gMonth", "xsd:gMonthDay", "xsd:gYear", "xsd:gYearMonth", "xsd:integer", "xsd:time");
 SQL;
-$totalUsed = $connection->query($sql)->fetchColumn();
+$totalUsed = $connection->query($sql)->fetchOne();
 $sql = <<<'SQL'
 SELECT COUNT(DISTINCT(`resource_id`)) FROM `value`
 WHERE type IN ("rdf:HTML", "rdf:XMLLiteral", "xsd:boolean", "xsd:date", "xsd:dateTime", "xsd:decimal", "xsd:gDay", "xsd:gMonth", "xsd:gMonthDay", "xsd:gYear", "xsd:gYearMonth", "xsd:integer", "xsd:time");
 SQL;
-$totalUsedResources = $connection->query($sql)->fetchColumn();
+$totalUsedResources = $connection->query($sql)->fetchOne();
 $message = sprintf('A total of %1$s values in %2$s resources will be updated.', $totalUsed, $totalUsedResources);
 $logger->notice($message);
 $messenger->addNotice($message);
@@ -53,7 +53,7 @@ $numerics = [
 $countNumerics = [];
 foreach ($numerics as $datatype) {
     $sql = "SELECT COUNT(`id`) FROM `value` WHERE `type` = '$datatype';";
-    $countNumerics[$datatype] = $connection->query($sql)->fetchColumn();
+    $countNumerics[$datatype] = $connection->query($sql)->fetchOne();
 }
 $totalNumerics = array_sum($countNumerics);
 
@@ -67,7 +67,7 @@ $removeds = [
 $countRemoveds = [];
 foreach ($removeds as $datatype) {
     $sql = "SELECT COUNT(`id`) FROM `value` WHERE `type` = '$datatype';";
-    $countRemoveds[$datatype] = $connection->query($sql)->fetchColumn();
+    $countRemoveds[$datatype] = $connection->query($sql)->fetchOne();
 }
 $totalRemoveds = array_sum($countRemoveds);
 
@@ -76,7 +76,7 @@ SELECT COUNT(`id`) FROM `value`
 WHERE `type` = "xsd:dateTime"
 AND (`value` LIKE "%+%" OR `value` LIKE "%:%-%");
 SQL;
-$totalTimeZonesUsed = $connection->query($sql)->fetchColumn();
+$totalTimeZonesUsed = $connection->query($sql)->fetchOne();
 
 if ($totalRemoveds || $totalTimeZonesUsed) {
     $flagUpgrade = $settings->get('datatyperdf_flag_upgrade', false);
