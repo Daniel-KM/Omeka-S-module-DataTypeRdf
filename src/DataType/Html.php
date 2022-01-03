@@ -56,12 +56,12 @@ class Html extends AbstractDataTypeRdf
     public function isValid(array $valueObject)
     {
         return isset($valueObject['@value'])
-            && $this->htmlPurifier->purify(trim($valueObject['@value'])) !== '';
+            && $this->htmlPurifier->purify(trim((string) $valueObject['@value'])) !== '';
     }
 
     public function hydrate(array $valueObject, Value $value, AbstractEntityAdapter $adapter): void
     {
-        $val = $this->htmlPurifier->purify(trim($valueObject['@value']));
+        $val = $this->htmlPurifier->purify(trim((string) $valueObject['@value']));
         $value->setValue($val);
         // Set defaults.
         // According to the recommandation, the language must be included

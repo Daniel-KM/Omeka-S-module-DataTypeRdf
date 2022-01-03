@@ -42,12 +42,12 @@ class Boolean extends AbstractDataTypeRdf
         return isset($valueObject['@value'])
             // See the lexical space of xsd:boolean.
             // @link https://www.w3.org/TR/xmlschema11-2/#f-booleanLexmap
-            && in_array(trim($valueObject['@value']), ['0', '1', 'false', 'true'], true);
+            && in_array(trim((string) $valueObject['@value']), ['0', '1', 'false', 'true'], true);
     }
 
     public function hydrate(array $valueObject, Value $value, AbstractEntityAdapter $adapter): void
     {
-        $val = in_array(trim($valueObject['@value']), ['1', 'true'], true) ? '1' : '0';
+        $val = in_array(trim((string) $valueObject['@value']), ['1', 'true'], true) ? '1' : '0';
         $value->setValue($val);
         // Set defaults.
         $value->setLang(null);

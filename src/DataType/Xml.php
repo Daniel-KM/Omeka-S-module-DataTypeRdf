@@ -40,12 +40,13 @@ class Xml extends AbstractDataTypeRdf
 
     public function isValid(array $valueObject)
     {
+        // TODO Check validity of xml.
         return isset($valueObject['@value']);
     }
 
     public function hydrate(array $valueObject, Value $value, AbstractEntityAdapter $adapter): void
     {
-        $value->setValue(trim($valueObject['@value']));
+        $value->setValue(trim((string) $valueObject['@value']));
         // Set defaults.
         // According to the recommandation, the language must be included
         // explicitly in the XML literal.
