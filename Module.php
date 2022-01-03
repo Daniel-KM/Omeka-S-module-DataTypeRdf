@@ -60,6 +60,7 @@ class Module extends AbstractModule
             'Omeka\Controller\Admin\ItemSet',
             'Omeka\Controller\Admin\Media',
             'Annotate\Controller\Admin\Annotation',
+            \Article\Controller\Admin\ArticleController::class,
         ];
         foreach ($controllers as $controller) {
             $sharedEventManager->attach(
