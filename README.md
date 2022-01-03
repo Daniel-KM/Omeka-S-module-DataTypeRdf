@@ -92,7 +92,7 @@ of the CeCILL license and that you accept its terms.
 Copyright
 ---------
 
-* Copyright Daniel Berthereau, 2018-2021 (see [Daniel-KM] on GitLab)
+* Copyright Daniel Berthereau, 2018-2022 (see [Daniel-KM] on GitLab)
 
 
 [Data Type RDF]: https://gitlab.com/Daniel-KM/Omeka-S-module-DataTypeRdf
