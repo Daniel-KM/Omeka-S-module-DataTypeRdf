@@ -2,7 +2,8 @@ Data Type RDF (module for Omeka S)
 ==================================
 
 > __New versions of this module and support for Omeka S version 3.0 and above
-> are available on [GitLab], which seems to respect users and privacy better.__
+> are available on [GitLab], which seems to respect users and privacy better
+> than the previous repository.__
 
 [Data Type RDF] is a module for [Omeka S] that implements some [RDF datatypes]
 and an [XSD datatype] recommended by the World Wide Web consortium [W3C] in
@@ -39,9 +40,8 @@ TODO
 
 - Simplify search ([Omeka S issue #1241]).
 - Add xsd:token or a derivative for standard or custom enumerations (language, etc.).
-- Add xsd:anyURI for uris.
 - Manage restrictions via the resource templates (default value for boolean,
-  range, default tokens, with or without seconds, css for html, xsl for xml…).
+  default tokens, css for html, xsl for xml…).
 
 
 Warning
@@ -92,7 +92,7 @@ of the CeCILL license and that you accept its terms.
 Copyright
 ---------
 
-* Copyright Daniel Berthereau, 2018-2020
+* Copyright Daniel Berthereau, 2018-2021 (see [Daniel-KM] on GitLab)
 
 
 [Data Type RDF]: https://gitlab.com/Daniel-KM/Omeka-S-module-DataTypeRdf
