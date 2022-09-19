@@ -1,35 +1,44 @@
-.o-icon-html:before {
-    /* Unavailable in the default config of Omeka. */
-    /* content: "\f13b"; */
-    content: "\f121";
-}
-.o-icon-xml:before {
-    content: "\f121";
-}
-.o-icon-boolean:before {
-    content: "\f00c";
-}
-.inputs .cke_textarea_inline {
-    resize: vertical;
-    line-height: 1.5;
-    background-color: #fff;
-    min-width: 0;
-}
-.inputs .value .cke_textarea_inline {
-    width: 100%;
-    margin: 0;
-}
-.inputs .value a.value-language ~ .cke_textarea_inline {
-    padding-left: 42px;
-}
-.inputs input[type="text"].value-language.active.active ~ .cke_textarea_inline {
-    padding-left: 6px;
-    border-top: 0;
-}
-.inputs .value[data-data-type="boolean"] .input-body {
-    background-color: inherit;
-    text-align: center;
-}
-.inputs .value[data-data-type="boolean"] .input-body input[type=checkbox] {
-    vertical-align: middle;
+@media screen {
+
+    .o-icon-html:before {
+        /* Unavailable in the default config of Omeka. */
+        /* content: "\f13b"; */
+        content: "\f121";
+    }
+    .o-icon-xml:before {
+        content: "\f121";
+    }
+    .o-icon-boolean:before {
+        content: "\f00c";
+    }
+    .inputs .cke_textarea_inline {
+        resize: vertical;
+        line-height: 1.5;
+        background-color: #fff;
+        min-width: 0;
+    }
+    .inputs .value .cke_textarea_inline {
+        width: 100%;
+        margin: 0;
+    }
+    .inputs .value a.value-language ~ .cke_textarea_inline {
+        padding-left: 42px;
+    }
+    .inputs input[type="text"].value-language.active.active ~ .cke_textarea_inline {
+        padding-left: 6px;
+        border-top: 0;
+    }
+    .inputs .value[data-data-type="boolean"] .input-body {
+        background-color: inherit;
+        text-align: center;
+    }
+    .inputs .value[data-data-type="boolean"] .input-body input[type=checkbox] {
+        vertical-align: middle;
+    }
+
+    .cke_button_icon.cke_button__footnotes_icon {
+        background-image: url("../img/footnotes.png");
+        background-size: auto;
+    }
+
 }
