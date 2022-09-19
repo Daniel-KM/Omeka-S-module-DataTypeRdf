@@ -12,6 +12,17 @@ return [
             'html' => Service\DataType\HtmlFactory::class,
         ],
     ],
+    'view_helpers' => [
+        'invokables' => [
+            'ckEditor' => View\Helper\CkEditor::class,
+        ],
+    ],
+    'form_elements' => [
+        'invokables' => [
+            Form\Element\OptionalRadio::class => Form\Element\OptionalRadio::class,
+            Form\SettingsFieldset::class => Form\SettingsFieldset::class,
+        ],
+    ],
     'translator' => [
         'translation_file_patterns' => [
             [
@@ -20,6 +31,12 @@ return [
                 'pattern' => '%s.mo',
                 'text_domain' => null,
             ],
+        ],
+    ],
+    'datatyperdf' => [
+        'settings' => [
+            'datatyperdf_html_mode_resource' => 'inline',
+            'datatyperdf_html_config_resource' => 'default',
         ],
     ],
 ];

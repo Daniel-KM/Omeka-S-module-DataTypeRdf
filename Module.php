@@ -2,11 +2,10 @@
 /**
  * DataTypeRdf
  *
- * Implement the main W3C RDF datatypes (html, xml, boolean, integer, decimal
- * and date/time) in order to simplify user input and to give more semanticity
- * to values of resources.
+ * Implement common W3C RDF datatypes (html, xml, boolean) in order to simplify
+ * user input and to give more semanticity to values of resources.
  *
- * @copyright Daniel Berthereau, 2018
+ * @copyright Daniel Berthereau, 2018-2022
  * @license http://www.cecill.info/licences/Licence_CeCILL_V2.1-en.txt
  *
  * This software is governed by the CeCILL license under French law and abiding
@@ -34,19 +33,22 @@
  */
 namespace DataTypeRdf;
 
+if (!class_exists(\Generic\AbstractModule::class)) {
+    require file_exists(dirname(__DIR__) . '/Generic/AbstractModule.php')
+        ? dirname(__DIR__) . '/Generic/AbstractModule.php'
+        : __DIR__ . '/src/Generic/AbstractModule.php';
+}
+
+use Generic\AbstractModule;
 use Laminas\EventManager\Event;
 use Laminas\EventManager\SharedEventManagerInterface;
 use Laminas\ServiceManager\ServiceLocatorInterface;
-use Omeka\Module\AbstractModule;
 
 class Module extends AbstractModule
 {
-    public function getConfig()
-    {
-        return include __DIR__ . '/config/module.config.php';
-    }
+    const NAMESPACE = __NAMESPACE__;
 
-    public function install(ServiceLocatorInterface $services)
+    public function install(ServiceLocatorInterface $services): void
     {
         if ($services->get('Omeka\ModuleManager')->getModule('RdfDatatype')) {
             require_once __DIR__ . '/data/scripts/upgrade_from_rdfdatatype.php';
@@ -60,7 +62,6 @@ class Module extends AbstractModule
             'Omeka\Controller\Admin\ItemSet',
             'Omeka\Controller\Admin\Media',
             'Annotate\Controller\Admin\Annotation',
-            \Article\Controller\Admin\ArticleController::class,
         ];
         foreach ($controllers as $controller) {
             $sharedEventManager->attach(
@@ -74,6 +75,12 @@ class Module extends AbstractModule
                 [$this, 'prepareResourceForm']
             );
         }
+
+        $sharedEventManager->attach(
+            \Omeka\Form\SettingForm::class,
+            'form.add_elements',
+            [$this, 'handleMainSettings']
+        );
     }
 
     /**

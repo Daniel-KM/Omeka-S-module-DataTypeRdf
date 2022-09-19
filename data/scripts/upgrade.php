@@ -2,20 +2,28 @@
 
 namespace DataTypeRdf;
 
+use Omeka\Stdlib\Message;
+use Omeka\Mvc\Controller\Plugin\Messenger;
+
 /**
  * @var Module $this
- * @var \Laminas\ServiceManager\ServiceLocatorInterface $services
+ * @var \Laminas\ServiceManager\ServiceLocatorInterface $serviceLocator
  * @var string $newVersion
  * @var string $oldVersion
  *
  * @var \Doctrine\DBAL\Connection $connection
  * @var \Doctrine\ORM\EntityManager $entityManager
- * @var \Omeka\Api\Manager $api
+ * @var \Omeka\Mvc\Controller\Plugin\Api $api
  */
-// $settings = $services->get('Omeka\Settings');
-// $config = require dirname(__DIR__, 2) . '/config/module.config.php';
-// $connection = $services->get('Omeka\Connection');
+$services = $serviceLocator;
+$settings = $services->get('Omeka\Settings');
+// $config = require dirname(dirname(__DIR__)) . '/config/module.config.php';
+$connection = $services->get('Omeka\Connection');
 // $entityManager = $services->get('Omeka\EntityManager');
 // $plugins = $services->get('ControllerPluginManager');
 // $api = $plugins->get('api');
-// $space = strtolower(__NAMESPACE__);
+
+if (version_compare($oldVersion, '3.3.4.3', '<')) {
+    $settings->set('datatyperdf_html_mode_resource', $settings->get('datatyperdf_html_mode_resource', $settings->get('blockplus_html_mode')) ?: 'inline');
+    $settings->set('datatyperdf_html_config_resource', $settings->get('datatyperdf_html_config_resource', $settings->get('blockplus_html_config')) ?: 'default');
+}

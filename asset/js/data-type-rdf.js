@@ -5,15 +5,28 @@
      */
     $(document).on('o:prepare-value', function(e, dataType, value, valueObj) {
         // Prepare markup for some specific resource data types.
+        // TODO Maximize in inline mode.
+        // Inline maximize was hard, but Omeka still use an old version of ckeditor.
+        // So the simpler way is to set mode to "document", then add some code
+        // to show/hide the toolbar.
+        // @link https://stackoverflow.com/questions/14177434/add-maximize-and-source-editing-plugins-for-inline-editing#answer-14181331
         if (dataType === 'html') {
             var thisValue = $(value);
             // Append the ckeditor.
             thisValue.find('.wyziwyg').each(function () {
-                var editor = CKEDITOR.inline(this, {
+                // Adaptation of BlockPlus / site-page-edit.js.
+                var editor = null;
+                const ckeditorParams = {
+                    // The option "customConfig" is set in hml code.
                     on: {change: function() {
                         this.updateElement();
                     }},
-                });
+                };
+                if (CKEDITOR.config.customHtmlMode === 'document') {
+                    editor = CKEDITOR.replace(this, ckeditorParams);
+                } else {
+                    editor = CKEDITOR.inline(this, ckeditorParams);
+                }
                 $(this).data('ckeditorInstance', editor);
             })
         } else if (dataType === 'boolean') {
