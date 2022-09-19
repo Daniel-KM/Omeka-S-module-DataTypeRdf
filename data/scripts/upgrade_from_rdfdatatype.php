@@ -85,7 +85,7 @@ if ($totalRemoveds || $totalTimeZonesUsed) {
 
         if ($totalRemoveds) {
             $messageCount = array_filter($countRemoveds);
-            array_walk($messageCount, function (&$v, $k) {
+            array_walk($messageCount, function (&$v, $k): void {
                 $v = "$k ($v)";
             });
             $message = sprintf('Some resources contain values with a data type that is not managed (%s). They will be converted into "literal".',
@@ -114,7 +114,7 @@ if ($totalRemoveds || $totalTimeZonesUsed) {
 
         if ($totalNumerics && !$moduleNumericDataTypes) {
             $messageCount = array_filter($countNumerics);
-            array_walk($messageCount, function (&$v, $k) {
+            array_walk($messageCount, function (&$v, $k): void {
                 $v = "$k ($v)";
             });
             $message = sprintf('Furthermore, the module Numeric Data Types is required to upgrade other data automatically: %s',
@@ -132,7 +132,7 @@ if ($totalRemoveds || $totalTimeZonesUsed) {
 
 if ($totalNumerics && !$moduleNumericDataTypes) {
     $messageCount = array_filter($countNumerics);
-    array_walk($messageCount, function (&$v, $k) {
+    array_walk($messageCount, function (&$v, $k): void {
         $v = "$k ($v)";
     });
     $message = sprintf('The module Numeric Data Types is required to upgrade some data automatically: %s',
@@ -169,7 +169,7 @@ $sql = "UPDATE `value` SET `type` = 'literal' WHERE `type` IN ('$olds');";
 $connection->executeStatement($sql);
 if ($totalRemoveds) {
     $messageCount = array_filter($countRemoveds);
-    array_walk($messageCount, function (&$v, $k) {
+    array_walk($messageCount, function (&$v, $k): void {
         $v = "$k ($v)";
     });
     $message = sprintf('Values with unmanaged data types were converted into "literal" sucessfully: %s.', implode(', ', $messageCount));
