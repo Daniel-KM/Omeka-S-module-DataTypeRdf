@@ -33,12 +33,12 @@ $sql = <<<'SQL'
 SELECT COUNT(`id`) FROM `value`
 WHERE type IN ("rdf:HTML", "rdf:XMLLiteral", "xsd:boolean", "xsd:date", "xsd:dateTime", "xsd:decimal", "xsd:gDay", "xsd:gMonth", "xsd:gMonthDay", "xsd:gYear", "xsd:gYearMonth", "xsd:integer", "xsd:time");
 SQL;
-$totalUsed = $connection->query($sql)->fetchOne();
+$totalUsed = $connection->executeQuery($sql)->fetchOne();
 $sql = <<<'SQL'
 SELECT COUNT(DISTINCT(`resource_id`)) FROM `value`
 WHERE type IN ("rdf:HTML", "rdf:XMLLiteral", "xsd:boolean", "xsd:date", "xsd:dateTime", "xsd:decimal", "xsd:gDay", "xsd:gMonth", "xsd:gMonthDay", "xsd:gYear", "xsd:gYearMonth", "xsd:integer", "xsd:time");
 SQL;
-$totalUsedResources = $connection->query($sql)->fetchOne();
+$totalUsedResources = $connection->executeQuery($sql)->fetchOne();
 $message = sprintf('A total of %1$s values in %2$s resources will be updated.', $totalUsed, $totalUsedResources);
 $logger->notice($message);
 $messenger->addNotice($message);
@@ -53,7 +53,7 @@ $numerics = [
 $countNumerics = [];
 foreach ($numerics as $datatype) {
     $sql = "SELECT COUNT(`id`) FROM `value` WHERE `type` = '$datatype';";
-    $countNumerics[$datatype] = $connection->query($sql)->fetchOne();
+    $countNumerics[$datatype] = $connection->executeQuery($sql)->fetchOne();
 }
 $totalNumerics = array_sum($countNumerics);
 
@@ -67,7 +67,7 @@ $removeds = [
 $countRemoveds = [];
 foreach ($removeds as $datatype) {
     $sql = "SELECT COUNT(`id`) FROM `value` WHERE `type` = '$datatype';";
-    $countRemoveds[$datatype] = $connection->query($sql)->fetchOne();
+    $countRemoveds[$datatype] = $connection->executeQuery($sql)->fetchOne();
 }
 $totalRemoveds = array_sum($countRemoveds);
 
@@ -76,7 +76,7 @@ SELECT COUNT(`id`) FROM `value`
 WHERE `type` = "xsd:dateTime"
 AND (`value` LIKE "%+%" OR `value` LIKE "%:%-%");
 SQL;
-$totalTimeZonesUsed = $connection->query($sql)->fetchOne();
+$totalTimeZonesUsed = $connection->executeQuery($sql)->fetchOne();
 
 if ($totalRemoveds || $totalTimeZonesUsed) {
     $flagUpgrade = $settings->get('datatyperdf_flag_upgrade', false);
@@ -105,7 +105,7 @@ if ($totalRemoveds || $totalTimeZonesUsed) {
 
         $datatypes = implode("', '", array_keys(array_filter($countRemoveds)));
         $sql = "SELECT DISTINCT(`resource_id`) FROM `value` WHERE `type` IN ('$datatypes') ORDER BY `resource_id`;";
-        $resourceIds = $connection->query($sql)->fetchAll(\PDO::FETCH_COLUMN);
+        $resourceIds = $connection->executeQuery($sql)->fetchFirstColumn();
         $message = sprintf('The list of resource ids with such values are: %s',
             implode(', ', $resourceIds)
         );
@@ -156,7 +156,7 @@ $map = [
 ];
 foreach ($map as $old => $new) {
     $sql = "UPDATE `value` SET `type` = '$new' WHERE `type` = '$old';";
-    $connection->exec($sql);
+    $connection->executeStatement($sql);
 }
 
 $message = 'Values with data types "html", "xml" and "boolean" were upgraded sucessfully.';
@@ -166,7 +166,7 @@ $messenger->addNotice($message);
 // Convert unmanaged data types to literal.
 $olds = implode("', '", $removeds);
 $sql = "UPDATE `value` SET `type` = 'literal' WHERE `type` IN ('$olds');";
-$connection->exec($sql);
+$connection->executeStatement($sql);
 if ($totalRemoveds) {
     $messageCount = array_filter($countRemoveds);
     array_walk($messageCount, function (&$v, $k) {
@@ -189,9 +189,9 @@ SELECT `resource_id`, `property_id`, `value`
 FROM `value`
 WHERE `type` = "xsd:integer";
 SQL;
-    $connection->exec($sql);
+    $connection->executeStatement($sql);
     $sql = "UPDATE `value` SET `type` = 'numeric:integer' WHERE `type` = 'xsd:integer';";
-    $connection->exec($sql);
+    $connection->executeStatement($sql);
 
     $message = 'Values with data type "integer" were upgraded sucessfully.';
     $logger->notice($message);
@@ -200,7 +200,7 @@ SQL;
     // Manage an exception when there is a timezone.
     if ($totalTimeZonesUsed) {
         $sql = "UPDATE `value` SET `type` = 'literal' WHERE `type` = 'xsd:dateTime' AND (`value` LIKE '%+%' OR `value` LIKE '%:%-%');";
-        $connection->exec($sql);
+        $connection->executeStatement($sql);
         $message = sprintf('Values with data type "xsd:dateTime" with a time zone were upgraded into "literal" sucessfully (%d).', $totalTimeZonesUsed);
         $logger->warn($message);
         $messenger->addWarning($message);
@@ -216,7 +216,7 @@ SQL;
         $sqlInsert = <<<'DQL'
 INSERT INTO `numeric_data_types_timestamp` (`resource_id`, `property_id`, `value`) VALUES (:resource_id, :property_id, :value);
 DQL;
-        $stmt = $connection->query($sqlSelect);
+        $stmt = $connection->executeQuery($sqlSelect);
         while ($row = $stmt->fetch()) {
             try {
                 $date = \NumericDataTypes\DataType\Timestamp::getDateTimeFromValue($row['value']);
@@ -225,7 +225,7 @@ DQL;
                     $row['resource_id'], $row['property_id'], $row['value']);
                 $rowId = $row['id'];
                 $sql = "UPDATE `value` SET `type` = 'literal' WHERE `id` = '$rowId';";
-                $connection->exec($sql);
+                $connection->executeStatement($sql);
                 $logger->err($message);
                 $messenger->addError($message);
                 continue;
@@ -235,7 +235,7 @@ DQL;
                 'property_id' => $row['property_id'],
                 'value' => $date['date']->getTimestamp(),
             ];
-            $result = $connection->executeUpdate($sqlInsert, $bind);
+            $result = $connection->executeStatement($sqlInsert, $bind);
             if (!$result) {
                 $message = sprintf('An issue occurred when inserting data for resource #%1$s, property #%2$s with value "%3$s".',
                     $row['resource_id'], $row['property_id'], $row['value']);
@@ -244,9 +244,9 @@ DQL;
             }
         }
 
-        $connection->exec($sql);
+        $connection->executeStatement($sql);
         $sql = "UPDATE `value` SET `type` = 'numeric:timestamp' WHERE `type` = '$datatype';";
-        $connection->exec($sql);
+        $connection->executeStatement($sql);
 
         $message = sprintf('Values with data type "%s" were upgraded into "numeric:timestamp" sucessfully.', $datatype);
         $logger->notice($message);
