@@ -38,9 +38,10 @@ enough in most of the cases.
 TODO
 ----
 
-- Simplify search ([Omeka S issue #1241]).
-- Add xsd:token or a derivative for standard or custom enumerations (language, etc.).
-- Manage restrictions via the resource templates (default value for boolean,
+- [ ] Simplify search ([Omeka S issue #1241]).
+- [ ] Manage inline maximization of html for ckeditor.
+- [ ] Add xsd:token or a derivative for standard or custom enumerations (language, etc.).
+- [ ] Manage restrictions via the resource templates (default value for boolean,
   default tokens, css for html, xsl for xml…).
 
 
