@@ -26,4 +26,10 @@ $connection = $services->get('Omeka\Connection');
 if (version_compare($oldVersion, '3.3.4.3', '<')) {
     $settings->set('datatyperdf_html_mode_resource', $settings->get('datatyperdf_html_mode_resource', $settings->get('blockplus_html_mode')) ?: 'inline');
     $settings->set('datatyperdf_html_config_resource', $settings->get('datatyperdf_html_config_resource', $settings->get('blockplus_html_config')) ?: 'default');
+
+    $messenger = new Messenger();
+    $message = new Message(
+        'It’s now possible to choose mode of display to edit html values of resources in main params.' // @translate
+    );
+    $messenger->addSuccess($message);
 }
