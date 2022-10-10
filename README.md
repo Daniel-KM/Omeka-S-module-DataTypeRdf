@@ -21,7 +21,26 @@ Number and date time data types can be managed with module [Numeric Data Types].
 Installation
 ------------
 
-Uncompress files and rename plugin folder `DataTypeRdf`.
+First, install the optional module [Generic] if wanted.
+
+The module uses an external js library for the html editor, so use the release
+zip to install it, or use and init the source.
+
+* From the zip
+
+Download the last release [DataTypeRdf.zip] from the list of releases (the master
+does not contain the dependency), and uncompress it in the `modules` directory.
+
+* From the source and for development:
+
+If the module was installed from the source, rename the name of the folder of
+the module to `DataTypeRdf`, and go to the root module, and run:
+
+```sh
+composer install --no-dev
+```
+
+Then install it like any other Omeka module.
 
 See general end user documentation for [Installing a module] and follow the
 config instructions.
@@ -63,6 +82,8 @@ See online issues on the [module issues] page on GitLab.
 License
 -------
 
+### Module
+
 This module is published under the [CeCILL v2.1] license, compatible with
 [GNU/GPL] and approved by [FSF] and [OSI].
 
@@ -89,6 +110,10 @@ conditions as regards security.
 The fact that you are presently reading this means that you have had knowledge
 of the CeCILL license and that you accept its terms.
 
+### CKEditor 4 footnotes
+
+One of the CKEditor ones [GPL]. See [CKEditor-Footnotes].
+
 
 Copyright
 ---------
@@ -104,6 +129,7 @@ Copyright
 [W3C]: https://www.w3.org
 [installing a module]: http://dev.omeka.org/docs/s/user-manual/modules/#installing-modules
 [Omeka S issue #1241]: https://github.com/omeka/omeka-s/issues/1241
+[CKEditor Footnotes]: https://github.com/andykirk/CKEditorFootnotes
 [module issues]: https://gitlab.com/Daniel-KM/Omeka-S-module-DataTypeRdf/-/issues
 [CeCILL v2.1]: https://www.cecill.info/licences/Licence_CeCILL_V2.1-en.html
 [GNU/GPL]: https://www.gnu.org/licenses/gpl-3.0.html
