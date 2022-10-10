@@ -1,0 +1,61 @@
+{
+    "name": "daniel-km/omeka-s-module-data-type-rdf",
+    "type": "library",
+    "description": "Implement some  W3C RDF datatypes (html, xml, boolean) in order to simplify user input and to give more semanticity to values of resources.",
+    "license": "CECILL-2.1",
+    "authors": [
+        {
+            "name": "Daniel Berthereau",
+            "email": "Daniel.packagist@Berthereau.net"
+        }
+    ],
+    "homepage": "https://gitlab.com/Daniel-KM/Omeka-S-module-DataTypeRdf",
+    "support": {
+        "issues": "https://gitlab.com/Daniel-KM/Omeka-S-module-DataTypeRdf/-/issues",
+        "forum": "https://forum.omeka.org/"
+    },
+    "keywords": [
+        "Omeka S",
+        "module",
+        "data type",
+        "footnotes"
+    ],
+    "require": {
+        "oomphinc/composer-installers-extender": "^2.0",
+        "andykirk/ckeditor-footnotes": "1.0.10"
+    },
+    "autoload": {
+        "psr-4": {
+            "DataTypeRdf\\": "src/"
+        }
+    },
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "andykirk/ckeditor-footnotes",
+                "version": "1.0.10",
+                "type": "omeka-addon-asset",
+                "dist": {
+                    "type": "tar",
+                    "reference": "",
+                    "url": "https://github.com/Daniel-KM/Omeka-S-module-BlockPlus/releases/download/3.3.14.0/ckeditor-footnotes-1.0.10-omeka.tar.gz"
+                }
+            }
+        }
+    ],
+    "extra": {
+        "installer-types": ["omeka-addon-asset"],
+        "installer-paths": {
+            "asset/vendor/{$name}/": [
+                "type:omeka-addon-asset"
+            ]
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true,
+            "oomphinc/composer-installers-extender": true
+        }
+    }
+}

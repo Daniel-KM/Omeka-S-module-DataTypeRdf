@@ -82,7 +82,7 @@ JS;
         $view->headScript()
             // Don't use defer for now.
             ->appendFile($assetUrl('vendor/ckeditor/ckeditor.js', 'Omeka'))
-            ->appendFile($assetUrl('vendor/ckeditor-footnotes/plugin.js', 'BlockPlus'), 'text/javascript', ['defer' => 'defer'])
+            ->appendFile($assetUrl('vendor/ckeditor-footnotes/plugin.js', 'DataTypeRdf'), 'text/javascript', ['defer' => 'defer'])
             ->appendFile($assetUrl('vendor/ckeditor/adapters/jquery.js', 'Omeka'))
             ->appendScript($script);
     }
