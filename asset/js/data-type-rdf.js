@@ -18,7 +18,7 @@
                 var editor = null;
                 const ckeditorParams = {
                     // The option "customConfig" is set in hml code.
-                    on: {change: function() {
+                    on: { change: function() {
                         this.updateElement();
                     }},
                 };

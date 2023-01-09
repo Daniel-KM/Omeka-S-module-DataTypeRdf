@@ -127,7 +127,7 @@ Copyright
 [RDF datatypes]: https://www.w3.org/TR/rdf11-concepts/#section-Datatypes
 [XSD datatype]: https://www.w3.org/TR/xmlschema11-2
 [W3C]: https://www.w3.org
-[installing a module]: http://dev.omeka.org/docs/s/user-manual/modules/#installing-modules
+[Installing a module]: https://omeka.org/s/docs/user-manual/modules/#installing-modules
 [Omeka S issue #1241]: https://github.com/omeka/omeka-s/issues/1241
 [CKEditor Footnotes]: https://github.com/andykirk/CKEditorFootnotes
 [module issues]: https://gitlab.com/Daniel-KM/Omeka-S-module-DataTypeRdf/-/issues

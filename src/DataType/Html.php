@@ -43,12 +43,12 @@ class Html extends AbstractDataTypeRdf
         $element->setAttributes([
             'class' => 'value to-require html wyziwyg',
             'data-value-key' => '@value',
-            // 'placeholder' => '<p>input <em>your</em> <strong>html</strong> content</p>', // @translate
+            // 'placeholder' => '<p>input <em>your</em> <strong>html</strong> content</p>', // @ translate
         ]);
 
         $translate = $view->plugin('translate');
-        $html = $view->hyperlink('', '#', ['class' => 'value-language o-icon-language', 'title' => $translate('Set language')]);
-        $html .= '<input class="value-language" type="text" data-value-key="@language" aria-label="' . $translate('Language') . '">';
+        $html = $view->hyperlink('', '#', ['class' => 'value-language o-icon-language', 'title' => $translate('Set language')]); // @translate
+        $html .= '<input class="value-language" type="text" data-value-key="@language" aria-label="' . $translate('Language') . '">'; // @translate
         $html .= $view->formTextarea($element);
         return $html;
     }
