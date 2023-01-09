@@ -6,9 +6,11 @@ use Laminas\View\Renderer\PhpRenderer;
 use Omeka\Api\Adapter\AbstractEntityAdapter;
 use Omeka\Api\Representation\ValueRepresentation;
 use Omeka\DataType\AbstractDataType;
+use Omeka\DataType\DataTypeInterface;
+use Omeka\DataType\ValueAnnotatingInterface;
 use Omeka\Entity\Value;
 
-abstract class AbstractDataTypeRdf extends AbstractDataType
+abstract class AbstractDataTypeRdf extends AbstractDataType implements DataTypeInterface, ValueAnnotatingInterface
 {
     public function getOptgroupLabel()
     {
@@ -33,13 +35,23 @@ abstract class AbstractDataTypeRdf extends AbstractDataType
 
     public function render(PhpRenderer $view, ValueRepresentation $value)
     {
-        return $value->value();
+        return (string) $value->value();
     }
 
     public function getJsonLd(ValueRepresentation $value)
     {
         return [
-            '@value' => $value->value(),
+            '@value' => (string) $value->value(),
         ];
+    }
+
+    public function valueAnnotationPrepareForm(PhpRenderer $view): void
+    {
+        $this->prepareForm($view);
+    }
+
+    public function valueAnnotationForm(PhpRenderer $view)
+    {
+        return $this->form($view);
     }
 }

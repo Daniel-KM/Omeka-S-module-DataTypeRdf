@@ -3,7 +3,7 @@
     /**
      * Prepare the markup for data types.
      */
-    $(document).on('o:prepare-value', function(e, dataType, value, valueObj) {
+    $(document).on('o:prepare-value o:prepare-value-annotation', function(e, dataType, value, valueObj) {
         // Prepare markup for some specific resource data types.
         // TODO Maximize in inline mode.
         // Inline maximize was hard, but Omeka still use an old version of ckeditor.

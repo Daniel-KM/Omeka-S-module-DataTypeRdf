@@ -11,6 +11,11 @@ return [
         'factories' => [
             'html' => Service\DataType\HtmlFactory::class,
         ],
+        'value_annotating' => [
+            'html',
+            'xml',
+            'boolean',
+        ],
     ],
     'view_helpers' => [
         'invokables' => [
