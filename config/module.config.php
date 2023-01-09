@@ -33,6 +33,22 @@ return [
             ],
         ],
     ],
+    'csv_import' => [
+        'data_types' => [
+            'html' => [
+                'label' => 'Html', // @translate
+                'adapter' => 'literal',
+            ],
+            'xml' => [
+                'label' => 'Xml', // @translate
+                'adapter' => 'literal',
+            ],
+            'boolean' => [
+                'label' => 'Boolean', // @translate
+                'adapter' => 'literal',
+            ],
+        ],
+    ],
     'datatyperdf' => [
         'settings' => [
             'datatyperdf_html_mode_resource' => 'inline',
