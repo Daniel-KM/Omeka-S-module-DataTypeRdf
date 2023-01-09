@@ -5,7 +5,7 @@
  * Implement common W3C RDF datatypes (html, xml, boolean) in order to simplify
  * user input and to give more semanticity to values of resources.
  *
- * @copyright Daniel Berthereau, 2018-2022
+ * @copyright Daniel Berthereau, 2018-2023
  * @license http://www.cecill.info/licences/Licence_CeCILL_V2.1-en.txt
  *
  * This software is governed by the CeCILL license under French law and abiding
