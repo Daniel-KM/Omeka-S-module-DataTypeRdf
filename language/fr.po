@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-09 00:00+0000\n"
-"PO-Revision-Date: 2023-01-09 00:00+0000\n"
+"POT-Creation-Date: 2023-04-17 00:00+0000\n"
+"PO-Revision-Date: 2023-04-17 00:00+0000\n"
 "Last-Translator: Daniel Berthereau <Daniel.fr@Berthereau.net>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -25,16 +25,16 @@ msgstr "Le module RdfDatatype a été désinstallé automatiquement."
 msgid "The module RdfDatatype cannot be automatically uninstalled."
 msgstr "Le module RdfDatatype ne peut pas être automatiquement désinstallé."
 
-#: src/DataType/Boolean.php:61
-msgid "true"
-msgstr "vrai"
-
-#: src/DataType/Boolean.php:62
+#: src/DataType/Boolean.php:34 src/DataType/Boolean.php:71
 msgid "false"
 msgstr "faux"
 
+#: src/DataType/Boolean.php:35 src/DataType/Boolean.php:70
+msgid "true"
+msgstr "vrai"
+
 #: src/Generic/AbstractModule.php:80 src/Generic/AbstractModule.php:88
-#: src/Generic/AbstractModule.php:859
+#: src/Generic/AbstractModule.php:890
 #, php-format
 msgid "This module requires the module \"%s\"."
 msgstr "Ce module requiert le module \"%s\"."
@@ -56,18 +56,18 @@ msgstr ""
 "Ce module ne peut pas installer ses tables car elles existent déjà. Essayez "
 "de les supprimer manuellement."
 
-#: src/Generic/AbstractModule.php:369
+#: src/Generic/AbstractModule.php:398
 #, php-format
 msgid "The module removed tables \"%s\" from a previous broken install."
 msgstr ""
 "Le module a supprimé les tables « %s » depuis une installation échouée."
 
-#: src/Generic/AbstractModule.php:854
+#: src/Generic/AbstractModule.php:885
 #, php-format
 msgid "This module requires the module \"%1$s\", version %2$s or above."
 msgstr "Ce module requiert le module « %1$s », version %2$s ou supérieure."
 
-#: src/Generic/AbstractModule.php:951
+#: src/Generic/AbstractModule.php:982
 #, php-format
 msgid ""
 "The module \"%s\" was automatically deactivated because the dependencies are "
@@ -88,30 +88,37 @@ msgstr ""
 msgid "Data Type Rdf"
 msgstr "Data Type RDF"
 
-#: src/Form/SettingsFieldset.php:20
+#: src/Form/SettingsFieldset.php:26
 msgid "Html edition mode for resources"
 msgstr "Mode d‘édition Html des ressources"
 
-#: src/Form/SettingsFieldset.php:22
+#: src/Form/SettingsFieldset.php:28
 msgid "Inline (default)"
 msgstr "En ligne (défaut)"
 
-#: src/Form/SettingsFieldset.php:23
+#: src/Form/SettingsFieldset.php:29
 msgid "Document (maximizable)"
 msgstr "Document (maximisable)"
 
-#: src/Form/SettingsFieldset.php:34
+#: src/Form/SettingsFieldset.php:41
 msgid "Html edition config and toolbar for resources"
 msgstr "Configuration de l’éditeur html pour les ressources"
 
-#: src/DataType/AbstractDataTypeRdf.php:15
+#: src/DataType/AbstractDataTypeRdf.php:17
 msgid "Data Type RDF"
 msgstr "Data Type RDF"
 
-#: src/DataType/Html.php:45
-msgid "@value"
-msgstr "@value"
-
-#: src/DataType/Boolean.php:23
+#: src/DataType/Boolean.php:23 config/module.config.php:52
 msgid "Boolean"
 msgstr "Booléen"
+
+#: config/module.config.php:44
+msgid "Html"
+msgstr "Html"
+
+#: config/module.config.php:48
+msgid "Xml"
+msgstr "Xml"
+
+#~ msgid "@value"
+#~ msgstr "@value"
