@@ -11,7 +11,7 @@
         // to show/hide the toolbar.
         // @link https://stackoverflow.com/questions/14177434/add-maximize-and-source-editing-plugins-for-inline-editing#answer-14181331
         if (dataType === 'html') {
-            var thisValue = $(value);
+            const thisValue = $(value);
             // Append the ckeditor.
             thisValue.find('.wyziwyg').each(function () {
                 // Adaptation of BlockPlus / site-page-edit.js.
@@ -30,11 +30,12 @@
                 $(this).data('ckeditorInstance', editor);
             })
         } else if (dataType === 'boolean') {
-            var thisValue = $(value);
-            var userInput = thisValue.find('.input-value');
-            var valueInput = thisValue.find('input[data-value-key="@value"]');
+            const thisValue = $(value);
+            const userInput = thisValue.find('.input-value');
+            const valueInput = thisValue.find('input[data-value-key="@value"]');
 
             // Set existing values during initial load.
+            // Force default val to "0".
             var val = valueInput.val();
             val = (val === '1' || val === 'true') ? '1' : '0';
             userInput.prop('checked', val === '1');
