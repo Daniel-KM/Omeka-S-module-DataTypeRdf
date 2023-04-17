@@ -40,7 +40,6 @@ if (!class_exists(\Generic\AbstractModule::class)) {
 }
 
 use Generic\AbstractModule;
-use Laminas\EventManager\Event;
 use Laminas\EventManager\SharedEventManagerInterface;
 use Laminas\ServiceManager\ServiceLocatorInterface;
 
@@ -57,42 +56,10 @@ class Module extends AbstractModule
 
     public function attachListeners(SharedEventManagerInterface $sharedEventManager): void
     {
-        $controllers = [
-            'Omeka\Controller\Admin\Item',
-            'Omeka\Controller\Admin\ItemSet',
-            'Omeka\Controller\Admin\Media',
-            'Annotate\Controller\Admin\Annotation',
-        ];
-        foreach ($controllers as $controller) {
-            $sharedEventManager->attach(
-                $controller,
-                'view.add.after',
-                [$this, 'prepareResourceForm']
-            );
-            $sharedEventManager->attach(
-                $controller,
-                'view.edit.after',
-                [$this, 'prepareResourceForm']
-            );
-        }
-
         $sharedEventManager->attach(
             \Omeka\Form\SettingForm::class,
             'form.add_elements',
             [$this, 'handleMainSettings']
         );
-    }
-
-    /**
-     * Prepare resource forms for rdf types.
-     *
-     * @param Event $event
-     */
-    public function prepareResourceForm(Event $event): void
-    {
-        $view = $event->getTarget();
-        $settings = $this->getServiceLocator()->get('Omeka\Settings');
-        $dataTypeRdfs = $settings->get('datatyperdf_datatypes', []);
-        $view->headScript()->appendScript('var dataTypeRdfs = ' . json_encode($dataTypeRdfs, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . ';');
     }
 }
