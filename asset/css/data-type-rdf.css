@@ -34,7 +34,9 @@
     .inputs .value[data-data-type="boolean"] .input-body input[type=checkbox] {
         vertical-align: middle;
     }
-
+    .inputs .value[data-data-type="boolean"] .input-body label.radio-boolean {
+        margin-right: 1em;
+    }
     #value-annotation-sidebar .sidebar-content .value-annotation .value[data-data-type="html"] {
         display: block;
     }

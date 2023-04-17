@@ -25,15 +25,24 @@ class Boolean extends AbstractDataTypeRdf
 
     public function form(PhpRenderer $view)
     {
-        $element = new Element\Checkbox('boolean-input');
-        $element->setAttributes([
-            'class' => 'input-value to-require boolean-input',
-        ]);
+        $element = new Element\Radio('');
+        $element
+            ->setLabelAttributes([
+                'class' => 'radio-boolean',
+            ])
+            ->setValueOptions([
+                '0' => $view->translate('false'), // @translate
+                '1' => $view->translate('true'), // @translate
+            ])
+            ->setAttributes([
+                'class' => 'input-value to-require boolean-input',
+            ]);
         $hidden = new Element\Hidden('boolean');
-        $hidden->setAttributes([
-            'data-value-key' => '@value',
-        ]);
-        return $view->formCheckbox($element)
+        $hidden
+            ->setAttributes([
+                'data-value-key' => '@value',
+            ]);
+        return $view->formRadio($element)
             . $view->formHidden($hidden);
     }
 

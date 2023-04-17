@@ -38,14 +38,13 @@
             // Force default val to "0".
             var val = valueInput.val();
             val = (val === '1' || val === 'true') ? '1' : '0';
-            userInput.prop('checked', val === '1');
-            userInput.val(val);
+            userInput.val([val]);
             valueInput.val(val);
 
             // Synchronize the user input with the true but hidden value.
-            userInput.on('change', function(e) {
-                var val = $(this).is(':checked') ? '1' : '0';
-                userInput.val(val);
+            userInput.on('change', function() {
+                const val = $(this).val();
+                userInput.val([val]);
                 valueInput.val(val);
             });
         }
