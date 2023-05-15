@@ -56,6 +56,14 @@ class Xml extends AbstractDataTypeRdf
         $value->setValueResource(null);
     }
 
+    public function render(PhpRenderer $view, ValueRepresentation $value, $options = [])
+    {
+        $options = (array) $options;
+        return empty($options['raw'])
+            ? (string) $value->value()
+            : $view->escapeHtml($value->value());
+    }
+
     public function getFulltextText(PhpRenderer $view, ValueRepresentation $value)
     {
         return strip_tags((string) $value->value());

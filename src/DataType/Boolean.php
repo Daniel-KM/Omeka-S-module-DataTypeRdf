@@ -64,11 +64,16 @@ class Boolean extends AbstractDataTypeRdf
         $value->setValueResource(null);
     }
 
-    public function render(PhpRenderer $view, ValueRepresentation $value)
+    public function render(PhpRenderer $view, ValueRepresentation $value, $options = [])
     {
-        return (int) $value->value()
-            ? $view->translate('true') // @translate
-            : $view->translate('false'); // @translate
+        $options = (array) $options;
+        $val = (int) $value->value();
+        if (empty($options['raw'])) {
+            return $val
+                ? $view->translate('true') // @translate
+                : $view->translate('false'); // @translate
+        }
+        return $val;
     }
 
     public function getFulltextText(PhpRenderer $view, ValueRepresentation $value)
