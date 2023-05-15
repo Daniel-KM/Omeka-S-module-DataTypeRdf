@@ -63,4 +63,27 @@
         height: 1em;
         margin-top: 18px;
     }
+
+    [data-data-type="xml"] .CodeMirror {
+        font-family: inherit;
+        font-size: unset;
+        height: 96px;
+        border: 1px solid silver;
+        min-height: 96px;
+    }
+    [data-data-type="xml"] .inputs .CodeMirror {
+        font-family: inherit;
+        font-size: unset;
+        height: 96px;
+        line-height: normal;
+    }
+    [data-data-type="xml"] .CodeMirror pre.CodeMirror-line {
+        line-height: normal;
+    }
+    [data-data-type="xml"] .CodeMirror-scroll {
+        min-height: 96px;
+    }
+    [data-data-type="xml"] .CodeMirror pre.CodeMirror-placeholder {
+        color: #999;
+    }
 }

@@ -34,6 +34,8 @@ class Xml extends AbstractDataTypeRdf
         $view->headScript()
             ->appendFile($assetUrl('vendor/codemirror/lib/codemirror.js', 'DataTypeRdf'))
             ->appendFile($assetUrl('vendor/codemirror/addon/display/placeholder.js', 'DataTypeRdf'))
+            // Required in resource form.
+            ->appendFile($assetUrl('vendor/codemirror/addon/display/autorefresh.js', 'DataTypeRdf'))
             ->appendFile($assetUrl('vendor/codemirror/addon/hint/show-hint.js', 'DataTypeRdf'))
             ->appendFile($assetUrl('vendor/codemirror/addon/hint/xml-hint.js', 'DataTypeRdf'))
             ->appendFile($assetUrl('vendor/codemirror/mode/xml/xml.js', 'DataTypeRdf'))

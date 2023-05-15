@@ -68,14 +68,17 @@
             const thisValue = $(value);
             // Append the ckeditor.
             thisValue.find('.xml-edit').each(function () {
-                CodeMirror.fromTextArea(document.getElementById(textarea), {
+                var cm = CodeMirror.fromTextArea(this, {
                     mode: 'xml',
-                    lineNumbers: true,
+                    lineWrapping: true,
+                    lineNumbers: false,
                     indentUnit: 4,
                     undoDepth: 1000,
+                    autofocus: true,
+                    autoRefresh: true,
+                    /*
                     height: 'auto',
                     viewportMargin: Infinity,
-                    /*
                     extraKeys: {
                         "'<'": completeAfter,
                         "'/'": completeIfAfterLt,
