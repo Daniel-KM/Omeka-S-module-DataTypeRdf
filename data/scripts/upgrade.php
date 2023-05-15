@@ -32,3 +32,10 @@ if (version_compare($oldVersion, '3.3.4.3', '<')) {
     );
     $messenger->addSuccess($message);
 }
+
+if (version_compare($oldVersion, '3.4.6', '<')) {
+    $message = new Message(
+        'Data type xml is now displayed with colors in resource form.' // @translate
+    );
+    $messenger->addSuccess($message);
+}
