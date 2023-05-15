@@ -59,6 +59,37 @@
             })
         }
 
+        /**
+         * Xml.
+         *
+         * @see https://github.com/codemirror/codemirror5
+         */
+        else if (dataType === 'xml') {
+            const thisValue = $(value);
+            // Append the ckeditor.
+            thisValue.find('.xml-edit').each(function () {
+                CodeMirror.fromTextArea(document.getElementById(textarea), {
+                    mode: 'xml',
+                    lineNumbers: true,
+                    indentUnit: 4,
+                    undoDepth: 1000,
+                    height: 'auto',
+                    viewportMargin: Infinity,
+                    /*
+                    extraKeys: {
+                        "'<'": completeAfter,
+                        "'/'": completeIfAfterLt,
+                        "' '": completeIfInTag,
+                        "'='": completeIfInTag,
+                        'Ctrl-Space': 'autocomplete'
+                    },
+                    hintOptions: {schemaInfo: tags},
+                    readOnly: window.location.href.includes('/show'),
+                    */
+                });
+            });
+        }
+
     });
 
 })(jQuery);

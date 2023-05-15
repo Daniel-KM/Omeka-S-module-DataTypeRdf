@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5fe8ef5a8c7735222b27c9fcb4831ee9",
+    "content-hash": "923e84086f7bdf3e34035ebe870be512",
     "packages": [
         {
             "name": "andykirk/ckeditor-footnotes",
@@ -13,6 +13,15 @@
                 "type": "tar",
                 "url": "https://github.com/Daniel-KM/Omeka-S-module-BlockPlus/releases/download/3.3.14.0/ckeditor-footnotes-1.0.10-omeka.tar.gz",
                 "reference": ""
+            },
+            "type": "omeka-addon-asset"
+        },
+        {
+            "name": "codemirror/codemirror",
+            "version": "5.65.13",
+            "dist": {
+                "type": "tar",
+                "url": "https://codemirror.net/5/codemirror.zip"
             },
             "type": "omeka-addon-asset"
         },
@@ -225,7 +234,9 @@
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "ext-xml": "*"
+    },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.0.0"
 }
