@@ -40,6 +40,10 @@ the module to `DataTypeRdf`, and go to the root module, and run:
 composer install --no-dev
 ```
 
+Note: the library "CodeMirror" has no file "codemirror.js" by default: it is
+created automatically when installing packages with npm. To use it via composer,
+the zip file from codemirror.net (v5) is used.
+
 Then install it like any other Omeka module.
 
 See general end user documentation for [Installing a module] and follow the
@@ -110,16 +114,24 @@ conditions as regards security.
 The fact that you are presently reading this means that you have had knowledge
 of the CeCILL license and that you accept its terms.
 
-### CKEditor 4 footnotes
+### Libraries
 
-One of the CKEditor ones [GPL]. See [CKEditor-Footnotes].
+- CKEditor 4 footnotes
+
+  One of the CKEditor ones [GPL]. See [CKEditor-Footnotes].
+
+- CodeMirror
+
+  License [MIT]
+
+See licenses of other libraries in composer.json.
 
 
 Copyright
 ---------
 
 * Copyright Daniel Berthereau, 2018-2023 (see [Daniel-KM] on GitLab)
-
+* Copyright 2011-2023, Marijn Haverbeke & alii (library [CodeMirror])
 
 [Data Type RDF]: https://gitlab.com/Daniel-KM/Omeka-S-module-DataTypeRdf
 [Omeka S]: https://omeka.org/s
@@ -130,6 +142,7 @@ Copyright
 [Installing a module]: https://omeka.org/s/docs/user-manual/modules/#installing-modules
 [Omeka S issue #1241]: https://github.com/omeka/omeka-s/issues/1241
 [CKEditor Footnotes]: https://github.com/andykirk/CKEditorFootnotes
+[CodeMirror]: https://codemirror.net
 [module issues]: https://gitlab.com/Daniel-KM/Omeka-S-module-DataTypeRdf/-/issues
 [CeCILL v2.1]: https://www.cecill.info/licences/Licence_CeCILL_V2.1-en.html
 [GNU/GPL]: https://www.gnu.org/licenses/gpl-3.0.html
