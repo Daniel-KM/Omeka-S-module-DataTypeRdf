@@ -40,6 +40,7 @@ if (!class_exists(\Generic\AbstractModule::class)) {
 }
 
 use Generic\AbstractModule;
+use Laminas\EventManager\Event;
 use Laminas\EventManager\SharedEventManagerInterface;
 use Laminas\ServiceManager\ServiceLocatorInterface;
 
@@ -61,5 +62,19 @@ class Module extends AbstractModule
             'form.add_elements',
             [$this, 'handleMainSettings']
         );
+// Waiting fix omeka/omeka-s#.
+        $sharedEventManager->attach(
+            '*',
+            'view.layout',
+            [$this, 'addDataTypeRdfCssFix']
+        );
+    }
+
+    public function addDataTypeRdfCssFix(Event $event): void
+    {
+        /** @var \Laminas\View\Renderer\PhpRenderer $view */
+        $view = $event->getTarget();
+        $view->headLink()
+            ->appendStylesheet($view->assetUrl('css/data-type-rdf-fix.css', 'DataTypeRdf'));
     }
 }
