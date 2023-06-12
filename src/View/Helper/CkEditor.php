@@ -9,7 +9,7 @@ use Laminas\View\Helper\AbstractHelper;
  *
  * Override core view helper to load a specific config.
  *
- * Copy in module BlockPlus.
+ * Used in various modules:
  * @see \Omeka\View\Helper\CkEditor
  * @see \BlockPlus\View\Helper\CkEditor
  * @see \DataTypeRdf\View\Helper\CkEditor
@@ -40,7 +40,11 @@ class CkEditor extends AbstractHelper
         $controller = $params->fromRoute('__CONTROLLER__');
         $action = $params->fromRoute('action');
 
+        // Check if module BlockPlus is available.
+        $hasBlockPlus = $plugins->has('pageMetadata');
+
         $isSiteAdminPage = $isSiteAdmin
+            && $hasBlockPlus
             && ($controller === 'Page' || $controller === 'page')
             && $action === 'edit';
 
@@ -61,21 +65,24 @@ CKEDITOR.config.customHtmlMode = '$htmlMode';
 JS;
             }
 
-            $htmlConfig = $setting($module . '_html_config_' . $pageOrResource);
-            $customConfigUrl = $htmlConfig && $htmlConfig !== 'default'
-                ? 'js/ckeditor_config_' . $htmlConfig . '.js'
-                : 'js/ckeditor_config.js';
-        } else {
-            $customConfigUrl = 'js/ckeditor_config.js';
+            if ($hasBlockPlus) {
+                $htmlConfig = $setting($module . '_html_config_' . $pageOrResource);
+                $customConfigJs = $htmlConfig && $htmlConfig !== 'default'
+                    ? 'js/ckeditor_config_' . $htmlConfig . '.js'
+                    : 'js/ckeditor_config.js';
+                $customConfigUrl = $escapeJs($assetUrl($customConfigJs, 'BlockPlus'));
+            }
         }
 
-        $customConfigUrl = $escapeJs($assetUrl($customConfigUrl, 'BlockPlus'));
+        $customConfigUrl ??= $escapeJs($assetUrl('js/ckeditor_config.js', 'DataTypeRdf'));
+
         $script .= <<<JS
 CKEDITOR.config.customConfig = '$customConfigUrl';
 JS;
 
         // The footnotes icon is not loaded automaically, so add css.
         // Only this css rule is needed.
+        // The js for data-type-rdf is already loaded with the data types.
         $view->headLink()
             ->appendStylesheet($assetUrl('css/data-type-rdf.css', 'DataTypeRdf'));
 

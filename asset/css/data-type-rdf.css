@@ -28,6 +28,19 @@
         padding-left: 6px;
         border-top: 0;
     }
+
+    /* Footnotes (against core styles) */
+    section.footnotes header {
+        background-color: inherit;
+        width: auto;
+        min-height: initial;
+        text-align: initial;
+        padding: initial;
+        color: initial;
+    }
+    section.footnotes header h2 {
+        font-size: 16px;
+    }
     .cke_button_icon.cke_button__footnotes_icon {
         background-image: url("../img/footnotes.png");
         background-size: auto;
