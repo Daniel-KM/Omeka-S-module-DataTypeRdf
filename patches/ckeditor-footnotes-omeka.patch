@@ -31,7 +31,7 @@ index c6684dc..6a5eff0 100644
          // The plugin initialization logic goes inside this method.
          init: function(editor) {
  
-+            let pathFootnotes = this.path.split(/\//).slice(0, this.path.split(/\//).length - 7).join('/') + '/modules/DataTypeRdf/asset/vendor/ckeditor-footnotes/';
++            let pathFootnotes = this.path.split(/\//).slice(0, this.path.split(/\//).length - 7).join('/') + '/modules/DataTypeRdf/asset/vendor/ckeditor-footnotes/footnotes/';
 +
              // Allow `cite` to be editable:
              CKEDITOR.dtd.$editable['cite'] = 1;
