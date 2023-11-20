@@ -42,7 +42,7 @@
         font-size: 16px;
     }
     .cke_button_icon.cke_button__footnotes_icon {
-        background-image: url("../img/footnotes.png");
+        background-image: url("../vendor/ckeditor-footnotes/footnotes/icons/footnotes.png");
         background-size: auto;
     }
 
