@@ -106,7 +106,7 @@ if ($totalRemoveds || $totalTimeZonesUsed) {
         }
 
         $datatypes = implode("', '", array_keys(array_filter($countRemoveds)));
-        $sql = "SELECT DISTINCT(`resource_id`) FROM `value` WHERE `type` IN ('$datatypes') ORDER BY `resource_id`;";
+        $sql = "SELECT DISTINCT(`resource_id`) FROM `value` WHERE `type` IN ('$datatypes') ORDER BY `resource_id` ASC;";
         $resourceIds = $connection->executeQuery($sql)->fetchFirstColumn();
         $message = sprintf('The list of resource ids with such values are: %s',
             implode(', ', $resourceIds)
