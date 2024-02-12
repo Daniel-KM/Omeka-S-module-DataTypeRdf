@@ -2,7 +2,7 @@
 
 namespace DataTypeRdf\Form;
 
-use DataTypeRdf\Form\Element as DataTypeRdfElement;
+use Common\Form\Element as CommonElement;
 use Laminas\Form\Fieldset;
 
 class SettingsFieldset extends Fieldset
@@ -20,7 +20,7 @@ class SettingsFieldset extends Fieldset
             ->setOption('element_groups', $this->elementGroups)
             ->add([
                 'name' => 'datatyperdf_html_mode_resource',
-                'type' => DataTypeRdfElement\OptionalRadio::class,
+                'type' => CommonElement\OptionalRadio::class,
                 'options' => [
                     'element_group' => 'resources',
                     'label' => 'Html edition mode for resources', // @translate
@@ -35,7 +35,7 @@ class SettingsFieldset extends Fieldset
             ])
             ->add([
                 'name' => 'datatyperdf_html_config_resource',
-                'type' => DataTypeRdfElement\OptionalRadio::class,
+                'type' => CommonElement\OptionalRadio::class,
                 'options' => [
                     'element_group' => 'resources',
                     'label' => 'Html edition config and toolbar for resources', // @translate

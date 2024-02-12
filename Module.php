@@ -33,20 +33,35 @@
  */
 namespace DataTypeRdf;
 
-if (!class_exists(\Generic\AbstractModule::class)) {
-    require file_exists(dirname(__DIR__) . '/Generic/AbstractModule.php')
-        ? dirname(__DIR__) . '/Generic/AbstractModule.php'
-        : __DIR__ . '/src/Generic/AbstractModule.php';
+if (!class_exists(\Common\TraitModule::class)) {
+    require_once dirname(__DIR__) . '/Common/TraitModule.php';
 }
 
-use Generic\AbstractModule;
+use Common\TraitModule;
 use Laminas\EventManager\Event;
 use Laminas\EventManager\SharedEventManagerInterface;
 use Laminas\ServiceManager\ServiceLocatorInterface;
+use Omeka\Module\AbstractModule;
 
 class Module extends AbstractModule
 {
     const NAMESPACE = __NAMESPACE__;
+
+    use TraitModule;
+
+    protected function preInstall(): void
+    {
+        $services = $this->getServiceLocator();
+        $translate = $services->get('ControllerPluginManager')->get('translate');
+
+        if (!method_exists($this, 'checkModuleActiveVersion') || !$this->checkModuleActiveVersion('Common', '3.4.51')) {
+            $message = new \Omeka\Stdlib\Message(
+                $translate('The module %1$s should be upgraded to version %2$s or later.'), // @translate
+                'Common', '3.4.51'
+                );
+            throw new \Omeka\Module\Exception\ModuleCannotInstallException((string) $message);
+        }
+    }
 
     public function install(ServiceLocatorInterface $services): void
     {
@@ -62,7 +77,7 @@ class Module extends AbstractModule
             'form.add_elements',
             [$this, 'handleMainSettings']
         );
-// Waiting fix omeka/omeka-s#.
+        // TODO Waiting fix omeka/omeka-s#.
         $sharedEventManager->attach(
             '*',
             'view.layout',

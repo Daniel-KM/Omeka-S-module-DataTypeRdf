@@ -24,7 +24,6 @@ return [
     ],
     'form_elements' => [
         'invokables' => [
-            Form\Element\OptionalRadio::class => Form\Element\OptionalRadio::class,
             Form\SettingsFieldset::class => Form\SettingsFieldset::class,
         ],
     ],
