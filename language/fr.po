@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-17 00:00+0000\n"
-"PO-Revision-Date: 2023-04-17 00:00+0000\n"
+"POT-Creation-Date: 2024-02-12 00:00+0000\n"
+"PO-Revision-Date: 2024-02-12 00:00+0000\n"
 "Last-Translator: Daniel Berthereau <Daniel.fr@Berthereau.net>\n"
 "Language-Team: \n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: data/scripts/upgrade_from_rdfdatatype.php:279
 msgid "The module RdfDatatype was automatically uninstalled."
@@ -25,56 +25,18 @@ msgstr "Le module RdfDatatype a été désinstallé automatiquement."
 msgid "The module RdfDatatype cannot be automatically uninstalled."
 msgstr "Le module RdfDatatype ne peut pas être automatiquement désinstallé."
 
-#: src/DataType/Boolean.php:34 src/DataType/Boolean.php:71
+#: data/scripts/upgrade.php:46 Module.php:59
+#, php-format
+msgid "The module %1$s should be upgraded to version %2$s or later."
+msgstr "Le module %1$s doit être mis à niveau à la version %2$s ou supérieure."
+
+#: src/DataType/Boolean.php:34 src/DataType/Boolean.php:80
 msgid "false"
 msgstr "faux"
 
-#: src/DataType/Boolean.php:35 src/DataType/Boolean.php:70
+#: src/DataType/Boolean.php:35 src/DataType/Boolean.php:79
 msgid "true"
 msgstr "vrai"
-
-#: src/Generic/AbstractModule.php:80 src/Generic/AbstractModule.php:88
-#: src/Generic/AbstractModule.php:890
-#, php-format
-msgid "This module requires the module \"%s\"."
-msgstr "Ce module requiert le module \"%s\"."
-
-#: src/Generic/AbstractModule.php:93
-#, php-format
-msgid "This module requires modules \"%s\"."
-msgstr "Ce module requiert les modules \"%s\"."
-
-#: src/Generic/AbstractModule.php:101
-msgid "This module has resources that cannot be installed."
-msgstr "Ce module a des ressources qui ne peuvent pas être installées."
-
-#: src/Generic/AbstractModule.php:108
-msgid ""
-"This module cannot install its tables, because they exist already. Try to "
-"remove them first."
-msgstr ""
-"Ce module ne peut pas installer ses tables car elles existent déjà. Essayez "
-"de les supprimer manuellement."
-
-#: src/Generic/AbstractModule.php:398
-#, php-format
-msgid "The module removed tables \"%s\" from a previous broken install."
-msgstr ""
-"Le module a supprimé les tables « %s » depuis une installation échouée."
-
-#: src/Generic/AbstractModule.php:885
-#, php-format
-msgid "This module requires the module \"%1$s\", version %2$s or above."
-msgstr "Ce module requiert le module « %1$s », version %2$s ou supérieure."
-
-#: src/Generic/AbstractModule.php:982
-#, php-format
-msgid ""
-"The module \"%s\" was automatically deactivated because the dependencies are "
-"unavailable."
-msgstr ""
-"Le module \"%s\" a été automatiquement désactivé car ses dépendances ne sont "
-"plus disponibles."
 
 #: data/scripts/upgrade.php:31
 msgid ""
@@ -83,6 +45,12 @@ msgid ""
 msgstr ""
 "Il est désormais possible de choisir un mode d‘édition pour modifier les "
 "valeurs html des ressources dans les paramètres généraux."
+
+#: data/scripts/upgrade.php:38
+msgid "Data type xml is now displayed with colors in resource form."
+msgstr ""
+"Le type de données xml s‘affiche désormais avec des couleurs dans le "
+"formulaire de ressource."
 
 #: src/Form/SettingsFieldset.php:10
 msgid "Data Type Rdf"
@@ -108,17 +76,48 @@ msgstr "Configuration de l’éditeur html pour les ressources"
 msgid "Data Type RDF"
 msgstr "Data Type RDF"
 
-#: src/DataType/Boolean.php:23 config/module.config.php:52
+#: src/DataType/Boolean.php:23 config/module.config.php:51
 msgid "Boolean"
 msgstr "Booléen"
 
-#: config/module.config.php:44
+#: config/module.config.php:43
 msgid "Html"
 msgstr "Html"
 
-#: config/module.config.php:48
+#: config/module.config.php:47
 msgid "Xml"
 msgstr "Xml"
+
+#, php-format
+#~ msgid "This module requires the module \"%s\"."
+#~ msgstr "Ce module requiert le module \"%s\"."
+
+#, php-format
+#~ msgid "This module requires modules \"%s\"."
+#~ msgstr "Ce module requiert les modules \"%s\"."
+
+#~ msgid "This module has resources that cannot be installed."
+#~ msgstr "Ce module a des ressources qui ne peuvent pas être installées."
+
+#~ msgid ""
+#~ "This module cannot install its tables, because they exist already. Try to "
+#~ "remove them first."
+#~ msgstr ""
+#~ "Ce module ne peut pas installer ses tables car elles existent déjà. "
+#~ "Essayez de les supprimer manuellement."
+
+#, php-format
+#~ msgid "The module removed tables \"%s\" from a previous broken install."
+#~ msgstr ""
+#~ "Le module a supprimé les tables « %s » depuis une installation échouée."
+
+#, php-format
+#~ msgid ""
+#~ "The module \"%s\" was automatically deactivated because the dependencies "
+#~ "are unavailable."
+#~ msgstr ""
+#~ "Le module \"%s\" a été automatiquement désactivé car ses dépendances ne "
+#~ "sont plus disponibles."
 
 #~ msgid "@value"
 #~ msgstr "@value"

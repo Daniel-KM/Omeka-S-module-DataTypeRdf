@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-17 00:00+0000\n"
+"POT-Creation-Date: 2024-02-12 00:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,56 +25,27 @@ msgstr ""
 msgid "The module RdfDatatype cannot be automatically uninstalled."
 msgstr ""
 
-#: src/DataType/Boolean.php:34 src/DataType/Boolean.php:71
+#: data/scripts/upgrade.php:46 Module.php:59
+#, php-format
+msgid "The module %1$s should be upgraded to version %2$s or later."
+msgstr ""
+
+#: src/DataType/Boolean.php:34 src/DataType/Boolean.php:80
 msgid "false"
 msgstr ""
 
-#: src/DataType/Boolean.php:35 src/DataType/Boolean.php:70
+#: src/DataType/Boolean.php:35 src/DataType/Boolean.php:79
 msgid "true"
-msgstr ""
-
-#: src/Generic/AbstractModule.php:80 src/Generic/AbstractModule.php:88
-#: src/Generic/AbstractModule.php:890
-#, php-format
-msgid "This module requires the module \"%s\"."
-msgstr ""
-
-#: src/Generic/AbstractModule.php:93
-#, php-format
-msgid "This module requires modules \"%s\"."
-msgstr ""
-
-#: src/Generic/AbstractModule.php:101
-msgid "This module has resources that cannot be installed."
-msgstr ""
-
-#: src/Generic/AbstractModule.php:108
-msgid ""
-"This module cannot install its tables, because they exist already. Try to "
-"remove them first."
-msgstr ""
-
-#: src/Generic/AbstractModule.php:398
-#, php-format
-msgid "The module removed tables \"%s\" from a previous broken install."
-msgstr ""
-
-#: src/Generic/AbstractModule.php:885
-#, php-format
-msgid "This module requires the module \"%1$s\", version %2$s or above."
-msgstr ""
-
-#: src/Generic/AbstractModule.php:982
-#, php-format
-msgid ""
-"The module \"%s\" was automatically deactivated because the dependencies are "
-"unavailable."
 msgstr ""
 
 #: data/scripts/upgrade.php:31
 msgid ""
 "It’s now possible to choose mode of display to edit html values of resources "
 "in main params."
+msgstr ""
+
+#: data/scripts/upgrade.php:38
+msgid "Data type xml is now displayed with colors in resource form."
 msgstr ""
 
 #: src/Form/SettingsFieldset.php:10
@@ -101,14 +72,14 @@ msgstr ""
 msgid "Data Type RDF"
 msgstr ""
 
-#: src/DataType/Boolean.php:23 config/module.config.php:52
+#: src/DataType/Boolean.php:23 config/module.config.php:51
 msgid "Boolean"
 msgstr ""
 
-#: config/module.config.php:44
+#: config/module.config.php:43
 msgid "Html"
 msgstr ""
 
-#: config/module.config.php:48
+#: config/module.config.php:47
 msgid "Xml"
 msgstr ""
