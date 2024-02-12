@@ -1,7 +1,7 @@
 {
     "name": "daniel-km/omeka-s-module-data-type-rdf",
     "type": "library",
-    "description": "Implement some  W3C RDF datatypes (html, xml, boolean) in order to simplify user input and to give more semanticity to values of resources.",
+    "description": "Implement some W3C RDF datatypes (html, xml, boolean) in order to simplify user input and to give more semanticity to values of resources.",
     "license": "CECILL-2.1",
     "authors": [
         {
@@ -22,10 +22,10 @@
     ],
     "require": {
         "ext-xml": "*",
-        "andykirk/ckeditor-footnotes": "1.2.0",
-        "codemirror/codemirror": "^5.65.13",
-        "oomphinc/composer-installers-extender": "^2.0",
-        "cweagans/composer-patches": "^1.7"
+        "andykirk/ckeditor-footnotes": "1.2",
+        "codemirror/codemirror": "^5.65",
+        "cweagans/composer-patches": "^1.7",
+        "oomphinc/composer-installers-extender": "^2.0"
     },
     "autoload": {
         "psr-4": {
@@ -80,8 +80,8 @@
     "config": {
         "allow-plugins": {
             "composer/installers": true,
-            "oomphinc/composer-installers-extender": true,
-            "cweagans/composer-patches": true
+            "cweagans/composer-patches": true,
+            "oomphinc/composer-installers-extender": true
         }
     }
 }

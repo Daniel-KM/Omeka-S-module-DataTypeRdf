@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "107ad3a1fe8ea4e69b7875d68f8f2083",
+    "content-hash": "4408c449a8fea8b33afb75273d474cfb",
     "packages": [
         {
             "name": "andykirk/ckeditor-footnotes",
@@ -290,5 +290,5 @@
         "ext-xml": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.3.0"
 }
