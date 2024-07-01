@@ -14,6 +14,7 @@ Added rdf and xsd datatypes:
 - [`rdf:HTML`](https://www.w3.org/TR/rdf11-concepts/#section-html): an html fragment
 - [`rdf:XMLLiteral`](https://www.w3.org/TR/rdf11-concepts/#section-XMLLiteral): an xml fragment
 - [`xsd:boolean`](https://www.w3.org/TR/xmlschema11-2/#boolean): true or false
+- [`rdf:JSON`](https://www.w3.org/TR/rdf12-concepts/#section-json): any valid json (array, object, boolean, float, etc.)
 
 Number and date time data types can be managed with module [Numeric Data Types].
 
@@ -46,7 +47,7 @@ the zip file from codemirror.net (v5) is used.
 
 Then install it like any other Omeka module.
 
-See general end user documentation for [Installing a module] and follow the
+See general end user documentation for [installing a module] and follow the
 config instructions.
 
 
@@ -139,7 +140,7 @@ Copyright
 [RDF datatypes]: https://www.w3.org/TR/rdf11-concepts/#section-Datatypes
 [XSD datatype]: https://www.w3.org/TR/xmlschema11-2
 [W3C]: https://www.w3.org
-[Installing a module]: https://omeka.org/s/docs/user-manual/modules/#installing-modules
+[installing a module]: https://omeka.org/s/docs/user-manual/modules/#installing-modules
 [Omeka S issue #1241]: https://github.com/omeka/omeka-s/issues/1241
 [CKEditor Footnotes]: https://github.com/andykirk/CKEditorFootnotes
 [CodeMirror]: https://codemirror.net
