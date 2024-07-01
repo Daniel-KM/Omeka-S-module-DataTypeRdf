@@ -6,6 +6,7 @@ return [
     'data_types' => [
         'invokables' => [
             'xml' => DataType\Xml::class,
+            'json' => DataType\Json::class,
             'boolean' => DataType\Boolean::class,
         ],
         'factories' => [
@@ -14,6 +15,7 @@ return [
         'value_annotating' => [
             'html',
             'xml',
+            'json',
             'boolean',
         ],
     ],
@@ -45,6 +47,10 @@ return [
             ],
             'xml' => [
                 'label' => 'Xml', // @translate
+                'adapter' => 'literal',
+            ],
+            'json' => [
+                'label' => 'Json', // @translate
                 'adapter' => 'literal',
             ],
             'boolean' => [

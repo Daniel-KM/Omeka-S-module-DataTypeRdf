@@ -60,6 +60,32 @@
         }
 
         /**
+         * Json.
+         *
+         * @see https://github.com/codemirror/codemirror5
+         */
+        else if (dataType === 'json') {
+            const thisValue = $(value);
+            // Append the ckeditor.
+            thisValue.find('.json-edit').each(function () {
+                var cm = CodeMirror.fromTextArea(this, {
+                    mode: "application/json",
+                    lineWrapping: true,
+                    lineNumbers: false,
+                    indentUnit: 4,
+                    undoDepth: 1000,
+                    autofocus: true,
+                    autoRefresh: true,
+                    /*
+                    height: 'auto',
+                    viewportMargin: Infinity,
+                    readOnly: window.location.href.includes('/show'),
+                    */
+                });
+            });
+        }
+
+        /**
          * Xml.
          *
          * @see https://github.com/codemirror/codemirror5
