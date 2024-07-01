@@ -2,7 +2,7 @@
 
 namespace DataTypeRdf;
 
-use Omeka\Stdlib\Message;
+use Common\Stdlib\PsrMessage;
 
 /**
  * @var Module $this
@@ -36,15 +36,24 @@ if (version_compare($oldVersion, '3.3.4.3', '<')) {
     $settings->set('datatyperdf_html_mode_resource', $settings->get('datatyperdf_html_mode_resource', $settings->get('blockplus_html_mode')) ?: 'inline');
     $settings->set('datatyperdf_html_config_resource', $settings->get('datatyperdf_html_config_resource', $settings->get('blockplus_html_config')) ?: 'default');
 
-    $message = new Message(
+    $message = new PsrMessage(
         'It’s now possible to choose mode of display to edit html values of resources in main params.' // @translate
     );
     $messenger->addSuccess($message);
 }
 
 if (version_compare($oldVersion, '3.4.6', '<')) {
-    $message = new Message(
+    $message = new PsrMessage(
         'Data type xml is now displayed with colors in resource form.' // @translate
     );
+    $messenger->addSuccess($message);
+}
+
+if (version_compare($oldVersion, '3.4.10', '<')) {
+    $message = new PsrMessage(
+        'A new data type has been added for json. Warning: the RDF specification is still in {link}discussion{link_end}. In particular, keys of objects should be stored in dictionnarly order.', // @translate
+        ['link' => '<a href="https://www.w3.org/TR/rdf12-concepts/#section-json" target="_blank" rel="noopener">', 'link_end' => '</a>']
+    );
+    $message->setEscapeHtml(false);
     $messenger->addSuccess($message);
 }
