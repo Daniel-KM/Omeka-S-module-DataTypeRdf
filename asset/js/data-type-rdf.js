@@ -70,6 +70,8 @@
             thisValue.find('.json-edit').each(function () {
                 var cm = CodeMirror.fromTextArea(this, {
                     mode: "application/json",
+                    matchBrackets: true,
+                    autoCloseBrackets: true,
                     lineWrapping: true,
                     lineNumbers: false,
                     indentUnit: 4,
