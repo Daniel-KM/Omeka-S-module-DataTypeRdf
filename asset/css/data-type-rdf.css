@@ -4,6 +4,9 @@
         /* content: "\f13b"; */
         content: "\f121";
     }
+    .o-icon-json::before {
+        content: "{}";
+    }
     .o-icon-xml::before {
         content: "\f121";
     }
