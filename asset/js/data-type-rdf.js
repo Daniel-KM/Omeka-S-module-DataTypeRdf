@@ -72,6 +72,7 @@
                     mode: "application/json",
                     matchBrackets: true,
                     autoCloseBrackets: true,
+                    showTrailingSpace: true,
                     lineWrapping: true,
                     lineNumbers: false,
                     indentUnit: 4,
@@ -101,6 +102,9 @@
             thisValue.find('.xml-edit').each(function () {
                 var cm = CodeMirror.fromTextArea(this, {
                     mode: 'xml',
+                    matchTags: true,
+                    autoCloseTags: true,
+                    showTrailingSpace: true,
                     lineWrapping: true,
                     lineNumbers: false,
                     indentUnit: 4,
