@@ -81,9 +81,22 @@ class Json extends AbstractDataTypeRdf
             : $view->escapeHtml($value->value());
     }
 
+    /**
+     * Only scalar json is returned.
+     *
+     * {@inheritDoc}
+     * @see \Omeka\DataType\AbstractDataType::getFulltextText()
+     */
     public function getFulltextText(PhpRenderer $view, ValueRepresentation $value)
     {
-        return strip_tags((string) $value->value());
+        $json = (string) $value->value();
+        if ($json === 'null') {
+            return '';
+        }
+        $json = json_decode($json, true);
+        return is_scalar($json)
+            ? (string) $json
+            : '';
     }
 
     public function getJsonLd(ValueRepresentation $value)
