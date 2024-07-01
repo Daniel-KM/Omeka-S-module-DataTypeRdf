@@ -83,6 +83,9 @@
                     viewportMargin: Infinity,
                     readOnly: window.location.href.includes('/show'),
                     */
+                })
+                .on('change', cm => {
+                    cm.save();
                 });
             });
         }
@@ -117,6 +120,9 @@
                     hintOptions: {schemaInfo: tags},
                     readOnly: window.location.href.includes('/show'),
                     */
+                })
+                .on('change', cm => {
+                    cm.save();
                 });
             });
         }
