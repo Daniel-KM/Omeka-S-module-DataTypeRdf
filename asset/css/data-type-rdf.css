@@ -80,6 +80,7 @@
         margin-top: 18px;
     }
 
+    [data-data-type="json"] .CodeMirror,
     [data-data-type="xml"] .CodeMirror {
         font-family: inherit;
         font-size: unset;
@@ -87,18 +88,22 @@
         border: 1px solid silver;
         min-height: 96px;
     }
+    [data-data-type="json"] .inputs .CodeMirror,
     [data-data-type="xml"] .inputs .CodeMirror {
         font-family: inherit;
         font-size: unset;
         height: 96px;
         line-height: normal;
     }
+    [data-data-type="json"] .CodeMirror pre.CodeMirror-line,
     [data-data-type="xml"] .CodeMirror pre.CodeMirror-line {
         line-height: normal;
     }
+    [data-data-type="json"] .CodeMirror-scroll,
     [data-data-type="xml"] .CodeMirror-scroll {
         min-height: 96px;
     }
+    [data-data-type="json"] .CodeMirror pre.CodeMirror-placeholder,
     [data-data-type="xml"] .CodeMirror pre.CodeMirror-placeholder {
         color: #999;
     }
