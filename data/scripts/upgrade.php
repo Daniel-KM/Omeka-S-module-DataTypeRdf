@@ -51,7 +51,7 @@ if (version_compare($oldVersion, '3.4.6', '<')) {
 
 if (version_compare($oldVersion, '3.4.10', '<')) {
     $message = new PsrMessage(
-        'A new data type has been added for json. Warning: the RDF specification is still in {link}discussion{link_end}. In particular, keys of objects should be stored in dictionnarly order.', // @translate
+        'A new data type has been added for json. Warning: the RDF specification is still in {link}discussion{link_end}. In particular, keys of objects should be stored in dictionnary order.', // @translate
         ['link' => '<a href="https://www.w3.org/TR/rdf12-concepts/#section-json" target="_blank" rel="noopener">', 'link_end' => '</a>']
     );
     $message->setEscapeHtml(false);
