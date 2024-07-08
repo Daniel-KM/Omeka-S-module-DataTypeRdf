@@ -62,6 +62,7 @@ enough in most of the cases.
 TODO
 ----
 
+- [ ] Integrate CodeMirror 6.
 - [ ] Simplify search ([Omeka S issue #1241]).
 - [ ] Manage inline maximization of html for ckeditor.
 - [ ] Add xsd:token or a derivative for standard or custom enumerations (language, etc.).
