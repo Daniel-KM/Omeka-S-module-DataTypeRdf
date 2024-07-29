@@ -68,6 +68,7 @@ TODO
 - [ ] Add xsd:token or a derivative for standard or custom enumerations (language, etc.).
 - [ ] Manage restrictions via the resource templates (default value for boolean,
   default tokens, css for html, xsl for xml…).
+- [ ] Strict order for json?
 
 
 Warning
