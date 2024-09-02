@@ -22,7 +22,7 @@ Number and date time data types can be managed with module [Numeric Data Types].
 Installation
 ------------
 
-First, install the optional module [Generic] if wanted.
+First, install the required module [Common](https://gitlab.com/Daniel-KM/Omeka-S-module-Common).
 
 The module uses an external js library for the html editor, so use the release
 zip to install it, or use and init the source.
