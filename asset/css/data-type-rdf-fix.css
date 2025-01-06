@@ -1,4 +1,4 @@
-@media screen {
+@media all {
     /* Footnotes (against core styles) */
     section.footnotes header {
         background-color: inherit;

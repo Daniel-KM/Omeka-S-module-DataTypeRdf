@@ -1,4 +1,4 @@
-@media screen {
+@media all {
     .o-icon-html::before {
         /* Unavailable in the default config of Omeka. */
         /* content: "\f13b"; */
