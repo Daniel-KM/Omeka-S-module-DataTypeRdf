@@ -133,7 +133,7 @@ See licenses of other libraries in composer.json.
 Copyright
 ---------
 
-* Copyright Daniel Berthereau, 2018-2024 (see [Daniel-KM] on GitLab)
+* Copyright Daniel Berthereau, 2018-2025 (see [Daniel-KM] on GitLab)
 * Copyright 2011-2023, Marijn Haverbeke & alii (library [CodeMirror])
 
 [Data Type RDF]: https://gitlab.com/Daniel-KM/Omeka-S-module-DataTypeRdf
