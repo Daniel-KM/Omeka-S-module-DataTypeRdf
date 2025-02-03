@@ -22,9 +22,8 @@
     ],
     "require": {
         "ext-xml": "*",
-        "andykirk/ckeditor-footnotes": "1.2",
+        "andykirk/ckeditor-footnotes": "1.2.0",
         "codemirror/codemirror": "^5.65",
-        "cweagans/composer-patches": "^1.7",
         "oomphinc/composer-installers-extender": "^2.0"
     },
     "autoload": {
@@ -41,7 +40,7 @@
                 "type": "omeka-addon-asset",
                 "dist": {
                     "type": "tar",
-                    "url": "https://github.com/andykirk/CKEditorFootnotes/archive/refs/tags/v1.2.0.tar.gz"
+                    "url": "https://github.com/Daniel-KM/Omeka-S-module-DataTypeRdf/releases/download/3.4.14/CKEditorFootnotes-1.2.0-fix.tar.gz"
                 }
             }
         },
@@ -65,17 +64,11 @@
                 "type:omeka-addon-asset"
             ]
         },
-        "installer-name" : "DataTypeRdf",
-        "patches": {
-            "andykirk/ckeditor-footnotes": {
-                "Fix footnotes": "patches/ckeditor-footnotes-omeka.patch"
-            }
-        }
+        "installer-name" : "DataTypeRdf"
     },
     "config": {
         "allow-plugins": {
             "composer/installers": true,
-            "cweagans/composer-patches": true,
             "oomphinc/composer-installers-extender": true
         }
     }
