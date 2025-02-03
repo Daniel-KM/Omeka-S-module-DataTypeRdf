@@ -22,33 +22,25 @@ Number and date time data types can be managed with module [Numeric Data Types].
 Installation
 ------------
 
-First, install the required module [Common](https://gitlab.com/Daniel-KM/Omeka-S-module-Common).
+See general end user documentation for [installing a module].
 
-The module uses an external js library for the html editor, so use the release
-zip to install it, or use and init the source.
+This module requires the module [Common], that should be installed first.
 
 * From the zip
 
-Download the last release [DataTypeRdf.zip] from the list of releases (the master
-does not contain the dependency), and uncompress it in the `modules` directory.
+Download the last release [DataTypeRdf.zip] from the list of releases, and
+uncompress it in the `modules` directory.
 
-* From the source and for development:
+* From the source and for development
 
 If the module was installed from the source, rename the name of the folder of
-the module to `DataTypeRdf`, and go to the root module, and run:
+the module to `DataTypeRdf`.
 
-```sh
-composer install --no-dev
-```
+Then install it like any other Omeka module and follow the config instructions.
 
 Note: the library "CodeMirror" has no file "codemirror.js" by default: it is
 created automatically when installing packages with npm. To use it via composer,
 the zip file from codemirror.net (v5) is used.
-
-Then install it like any other Omeka module.
-
-See general end user documentation for [installing a module] and follow the
-config instructions.
 
 
 Usage
@@ -144,6 +136,7 @@ Copyright
 [W3C]: https://www.w3.org
 [installing a module]: https://omeka.org/s/docs/user-manual/modules/#installing-modules
 [Omeka S issue #1241]: https://github.com/omeka/omeka-s/issues/1241
+[Common]: https://gitlab.com/Daniel-KM/Omeka-S-module-Common
 [CKEditor Footnotes]: https://github.com/andykirk/CKEditorFootnotes
 [CodeMirror]: https://codemirror.net
 [module issues]: https://gitlab.com/Daniel-KM/Omeka-S-module-DataTypeRdf/-/issues
