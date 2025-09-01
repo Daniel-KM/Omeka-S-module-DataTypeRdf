@@ -50,6 +50,14 @@ The data types are automatically available through the resource templates. It is
 not recommended to use too many data types by property. One to four types are
 enough in most of the cases.
 
+### xml
+
+For xml, according to specification, there should be an element that wraps the
+content. It there is no such element, you should add it, for example a `<div></div>`. Any tag can be used.
+
+Furthermore, it is included as it in the html. So the css of the site should be
+updated to display it.
+
 
 TODO
 ----
