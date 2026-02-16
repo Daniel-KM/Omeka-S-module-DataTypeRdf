@@ -38,9 +38,14 @@ the module to `DataTypeRdf`.
 
 Then install it like any other Omeka module and follow the config instructions.
 
-Note: the library "CodeMirror" has no file "codemirror.js" by default: it is
-created automatically when installing packages with npm. To use it via composer,
-the zip file from codemirror.net (v5) is used.
+The module uses [CodeMirror] 6 for the json and xml editors. The editor is
+bundled as a single JavaScript file. To rebuild it from source:
+
+```sh
+cd modules/DataTypeRdf
+npm install
+npm run build
+```
 
 
 Usage
@@ -50,11 +55,48 @@ The data types are automatically available through the resource templates. It is
 not recommended to use too many data types by property. One to four types are
 enough in most of the cases.
 
+### xml
+
+For xml, according to specification, there should be an element that wraps the
+content. It there is no such element, you should add it, for example a `<div></div>`. Any tag can be used.
+
+Furthermore, it is included as it in the html. So the css of the site should be
+updated to display it.
+
+### Rendering options
+
+The `render()` method of each data type accepts an `$options` array to control
+the output format. Two options are available:
+
+| Option   | Description                                                                        |
+|----------|------------------------------------------------------------------------------------|
+| `escape` | Force HTML escaping (for html/xml, shows source code as text)                      |
+| `native` | Return the unescaped native value (for json/boolean, bypass escape or translation) |
+
+The deprecated option `raw` is still supported as a fallback.
+
+Default rendering per data type:
+
+| Data type         | Default rendering                     | `escape`        | `native`        |
+|-------------------|---------------------------------------|-----------------|-----------------|
+| `rdf:HTML`        | Unescaped html (rendered as markup)   | Escaped html    | Same as default |
+| `rdf:XMLLiteral`  | Unescaped xml (rendered as markup)    | Escaped xml     | Same as default |
+| `rdf:JSON`        | Escaped json (safe for html contexts) | Same as default | Unescaped json  |
+| `xsd:boolean`     | Translated "true"/"false"             | "0"/"1" string  | "0"/"1" string  |
+
+Example usage in a theme or module template:
+
+```php
+// Show json value unescaped (for JavaScript contexts).
+echo $value->value(['native' => true]);
+// Show html source code instead of rendered markup.
+echo $value->value(['escape' => true]);
+```
+
 
 TODO
 ----
 
-- [ ] Integrate CodeMirror 6.
 - [ ] Simplify search ([Omeka S issue #1241]).
 - [ ] Manage inline maximization of html for ckeditor.
 - [ ] Add xsd:token or a derivative for standard or custom enumerations (language, etc.).
@@ -125,8 +167,8 @@ See licenses of other libraries in composer.json.
 Copyright
 ---------
 
-* Copyright Daniel Berthereau, 2018-2025 (see [Daniel-KM] on GitLab)
-* Copyright 2011-2023, Marijn Haverbeke & alii (library [CodeMirror])
+* Copyright Daniel Berthereau, 2018-2026 (see [Daniel-KM] on GitLab)
+* Copyright 2011-2026, Marijn Haverbeke & alii (library [CodeMirror])
 
 [Data Type RDF]: https://gitlab.com/Daniel-KM/Omeka-S-module-DataTypeRdf
 [Omeka S]: https://omeka.org/s
