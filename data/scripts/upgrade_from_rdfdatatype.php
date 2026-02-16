@@ -219,7 +219,7 @@ SQL;
 INSERT INTO `numeric_data_types_timestamp` (`resource_id`, `property_id`, `value`) VALUES (:resource_id, :property_id, :value);
 DQL;
         $stmt = $connection->executeQuery($sqlSelect);
-        while ($row = $stmt->fetch()) {
+        while ($row = $stmt->fetchAssociative()) {
             try {
                 $date = \NumericDataTypes\DataType\Timestamp::getDateTimeFromValue($row['value']);
             } catch (\Exception $e) {
@@ -246,7 +246,6 @@ DQL;
             }
         }
 
-        $connection->executeStatement($sql);
         $sql = "UPDATE `value` SET `type` = 'numeric:timestamp' WHERE `type` = '$datatype';";
         $connection->executeStatement($sql);
 
