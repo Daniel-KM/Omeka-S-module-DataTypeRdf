@@ -106,9 +106,13 @@ class Html extends AbstractDataTypeRdf
     public function render(PhpRenderer $view, ValueRepresentation $value, $options = [])
     {
         $options = (array) $options;
-        return empty($options['raw'])
-            ? (string) $value->value()
-            : $view->escapeHtml($value->value());
+        // Option "escape": force HTML escaping (show source code).
+        // Option "native": return unescaped value (same as default for html).
+        // Option "raw" (deprecated): same as "escape".
+        if (!empty($options['escape']) || !empty($options['raw'])) {
+            return $view->escapeHtml((string) $value->value());
+        }
+        return (string) $value->value();
     }
 
     public function getFulltextText(PhpRenderer $view, ValueRepresentation $value)

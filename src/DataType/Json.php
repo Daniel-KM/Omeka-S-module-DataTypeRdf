@@ -27,12 +27,10 @@ class Json extends AbstractDataTypeRdf
 
     public function prepareForm(PhpRenderer $view): void
     {
-        $plugins = $view->getHelperPluginManager();
-        $assetUrl = $plugins->get('assetUrl');
-
+        parent::prepareForm($view);
+        $assetUrl = $view->plugin('assetUrl');
         $view->headScript()
-            ->appendFile($assetUrl('js/codemirror-data-type-rdf.js', 'DataTypeRdf'))
-            ->appendFile($assetUrl('js/data-type-rdf.js', 'DataTypeRdf'), 'text/javascript', ['defer' => 'defer']);
+            ->appendFile($assetUrl('js/codemirror-data-type-rdf.js', 'DataTypeRdf'));
     }
 
     public function form(PhpRenderer $view)
@@ -67,9 +65,13 @@ class Json extends AbstractDataTypeRdf
     public function render(PhpRenderer $view, ValueRepresentation $value, $options = [])
     {
         $options = (array) $options;
-        return empty($options['raw'])
-            ? (string) $value->value()
-            : $view->escapeHtml($value->value());
+        // Option "native": return unescaped value (for JS/JSON contexts).
+        // Option "escape": force HTML escaping (same as default for json).
+        // Option "raw" (deprecated): same as "native".
+        if (!empty($options['native']) || !empty($options['raw'])) {
+            return (string) $value->value();
+        }
+        return $view->escapeHtml((string) $value->value());
     }
 
     /**

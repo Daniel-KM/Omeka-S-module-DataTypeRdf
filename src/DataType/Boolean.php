@@ -74,12 +74,14 @@ class Boolean extends AbstractDataTypeRdf
     {
         $options = (array) $options;
         $val = (int) $value->value();
-        if (empty($options['raw'])) {
-            return $val
-                ? $view->translate('true') // @translate
-                : $view->translate('false'); // @translate
+        // Option "native" or "escape": return "0"/"1" string.
+        // Option "raw" (deprecated): same as "native".
+        if (!empty($options['native']) || !empty($options['escape']) || !empty($options['raw'])) {
+            return (string) $val;
         }
-        return $val;
+        return $val
+            ? $view->translate('true') // @translate
+            : $view->translate('false'); // @translate
     }
 
     public function getFulltextText(PhpRenderer $view, ValueRepresentation $value)

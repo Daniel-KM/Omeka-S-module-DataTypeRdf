@@ -25,12 +25,10 @@ class Xml extends AbstractDataTypeRdf
 
     public function prepareForm(PhpRenderer $view): void
     {
-        $plugins = $view->getHelperPluginManager();
-        $assetUrl = $plugins->get('assetUrl');
-
+        parent::prepareForm($view);
+        $assetUrl = $view->plugin('assetUrl');
         $view->headScript()
-            ->appendFile($assetUrl('js/codemirror-data-type-rdf.js', 'DataTypeRdf'))
-            ->appendFile($assetUrl('js/data-type-rdf.js', 'DataTypeRdf'), 'text/javascript', ['defer' => 'defer']);
+            ->appendFile($assetUrl('js/codemirror-data-type-rdf.js', 'DataTypeRdf'));
     }
 
     public function form(PhpRenderer $view)
@@ -69,9 +67,13 @@ class Xml extends AbstractDataTypeRdf
     public function render(PhpRenderer $view, ValueRepresentation $value, $options = [])
     {
         $options = (array) $options;
-        return empty($options['raw'])
-            ? (string) $value->value()
-            : $view->escapeHtml($value->value());
+        // Option "escape": force HTML escaping (show source code).
+        // Option "native": return unescaped value (same as default for xml).
+        // Option "raw" (deprecated): same as "escape".
+        if (!empty($options['escape']) || !empty($options['raw'])) {
+            return $view->escapeHtml((string) $value->value());
+        }
+        return (string) $value->value();
     }
 
     public function getFulltextText(PhpRenderer $view, ValueRepresentation $value)
@@ -138,9 +140,9 @@ class Xml extends AbstractDataTypeRdf
         libxml_use_internal_errors(true);
         libxml_clear_errors();
         $simpleXml = simplexml_load_string(
-            html_entity_decode($string, ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML401),
+            $string,
             'SimpleXMLElement',
-            LIBXML_COMPACT | LIBXML_NONET | LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD
+            LIBXML_COMPACT | LIBXML_NONET
         );
 
         return $simpleXml !== false
