@@ -16,12 +16,11 @@ namespace DataTypeRdf;
  */
 $plugins = $services->get('ControllerPluginManager');
 $api = $plugins->get('api');
+$logger = $services->get('Omeka\Logger');
 $settings = $services->get('Omeka\Settings');
 $connection = $services->get('Omeka\Connection');
 $messenger = $plugins->get('messenger');
 $entityManager = $services->get('Omeka\EntityManager');
-
-$logger = $services->get('Omeka\Logger');
 
 /** @var \Omeka\Module\Manager $moduleManager */
 $moduleManager = $services->get('Omeka\ModuleManager');
@@ -32,14 +31,14 @@ if (!$moduleNumericDataTypes || $moduleNumericDataTypes->getState() !== \Omeka\M
 }
 
 $sql = <<<'SQL'
-SELECT COUNT(`id`) FROM `value`
-WHERE type IN ("rdf:HTML", "rdf:XMLLiteral", "xsd:boolean", "xsd:date", "xsd:dateTime", "xsd:decimal", "xsd:gDay", "xsd:gMonth", "xsd:gMonthDay", "xsd:gYear", "xsd:gYearMonth", "xsd:integer", "xsd:time");
-SQL;
+    SELECT COUNT(`id`) FROM `value`
+    WHERE type IN ("rdf:HTML", "rdf:XMLLiteral", "xsd:boolean", "xsd:date", "xsd:dateTime", "xsd:decimal", "xsd:gDay", "xsd:gMonth", "xsd:gMonthDay", "xsd:gYear", "xsd:gYearMonth", "xsd:integer", "xsd:time");
+    SQL;
 $totalUsed = $connection->executeQuery($sql)->fetchOne();
 $sql = <<<'SQL'
-SELECT COUNT(DISTINCT(`resource_id`)) FROM `value`
-WHERE type IN ("rdf:HTML", "rdf:XMLLiteral", "xsd:boolean", "xsd:date", "xsd:dateTime", "xsd:decimal", "xsd:gDay", "xsd:gMonth", "xsd:gMonthDay", "xsd:gYear", "xsd:gYearMonth", "xsd:integer", "xsd:time");
-SQL;
+    SELECT COUNT(DISTINCT(`resource_id`)) FROM `value`
+    WHERE type IN ("rdf:HTML", "rdf:XMLLiteral", "xsd:boolean", "xsd:date", "xsd:dateTime", "xsd:decimal", "xsd:gDay", "xsd:gMonth", "xsd:gMonthDay", "xsd:gYear", "xsd:gYearMonth", "xsd:integer", "xsd:time");
+    SQL;
 $totalUsedResources = $connection->executeQuery($sql)->fetchOne();
 $message = sprintf('A total of %1$s values in %2$s resources will be updated.', $totalUsed, $totalUsedResources);
 $logger->notice($message);
@@ -74,10 +73,10 @@ foreach ($removeds as $datatype) {
 $totalRemoveds = array_sum($countRemoveds);
 
 $sql = <<<'SQL'
-SELECT COUNT(`id`) FROM `value`
-WHERE `type` = "xsd:dateTime"
-AND (`value` LIKE "%+%" OR `value` LIKE "%:%-%");
-SQL;
+    SELECT COUNT(`id`) FROM `value`
+    WHERE `type` = "xsd:dateTime"
+    AND (`value` LIKE "%+%" OR `value` LIKE "%:%-%");
+    SQL;
 $totalTimeZonesUsed = $connection->executeQuery($sql)->fetchOne();
 
 if ($totalRemoveds || $totalTimeZonesUsed) {
@@ -186,11 +185,11 @@ if ($totalRemoveds) {
 if ($totalNumerics) {
     // Convert integer.
     $sql = <<<SQL
-INSERT INTO `numeric_data_types_integer` (`resource_id`, `property_id`, `value`)
-SELECT `resource_id`, `property_id`, `value`
-FROM `value`
-WHERE `type` = "xsd:integer";
-SQL;
+        INSERT INTO `numeric_data_types_integer` (`resource_id`, `property_id`, `value`)
+        SELECT `resource_id`, `property_id`, `value`
+        FROM `value`
+        WHERE `type` = "xsd:integer";
+        SQL;
     $connection->executeStatement($sql);
     $sql = "UPDATE `value` SET `type` = 'numeric:integer' WHERE `type` = 'xsd:integer';";
     $connection->executeStatement($sql);
@@ -211,13 +210,13 @@ SQL;
     // Convert dates.
     foreach (['xsd:dateTime', 'xsd:date', 'xsd:gYear', 'xsd:gYearMonth'] as $datatype) {
         $sqlSelect = <<<SQL
-SELECT `id`, `resource_id`, `property_id`, `value`
-FROM `value`
-WHERE `type` = "$datatype";
-SQL;
+            SELECT `id`, `resource_id`, `property_id`, `value`
+            FROM `value`
+            WHERE `type` = "$datatype";
+            SQL;
         $sqlInsert = <<<'DQL'
-INSERT INTO `numeric_data_types_timestamp` (`resource_id`, `property_id`, `value`) VALUES (:resource_id, :property_id, :value);
-DQL;
+            INSERT INTO `numeric_data_types_timestamp` (`resource_id`, `property_id`, `value`) VALUES (:resource_id, :property_id, :value);
+            DQL;
         $stmt = $connection->executeQuery($sqlSelect);
         while ($row = $stmt->fetchAssociative()) {
             try {

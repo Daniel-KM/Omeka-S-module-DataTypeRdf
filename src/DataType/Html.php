@@ -48,21 +48,13 @@ class Html extends AbstractDataTypeRdf
 
         $translate = $view->plugin('translate');
 
-        $isOldOmeka = version_compare(\Omeka\Module::VERSION, '4', '<');
-        if ($isOldOmeka) {
-            $html = $view->hyperlink('', '#', ['class' => 'value-language o-icon-language', 'title' => $translate('Set language')]); // @translate
-            $html .= '<input class="value-language" type="text" data-value-key="@language" aria-label="'
-                . $translate('Language') // @translate
-                . '"/>';
-        } else {
-            $html = '<div class="language-wrapper active">'
-                . $view->hyperlink('', '#', ['class' => 'value-language o-icon-language', 'title' => $translate('Set language'), 'aria-label' => $translate('Set language')]) // @translate
-                . '<label class="language-label">'
-                . '<span class="value-label-text">' . $translate('Language') . '</span>'
-                . '<input class="value-language" type="text" list="value-languages" data-value-key="@language"/>'
-                . '</label>'
-                . '</div>';
-        }
+        $html = '<div class="language-wrapper active">'
+            . $view->hyperlink('', '#', ['class' => 'value-language o-icon-language', 'title' => $translate('Set language'), 'aria-label' => $translate('Set language')]) // @translate
+            . '<label class="language-label">'
+            . '<span class="value-label-text">' . $translate('Language') . '</span>'
+            . '<input class="value-language" type="text" list="value-languages" data-value-key="@language"/>'
+            . '</label>'
+            . '</div>';
 
         $html .= $view->formTextarea($element);
         return $html;

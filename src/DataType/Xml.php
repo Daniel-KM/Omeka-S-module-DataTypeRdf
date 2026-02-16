@@ -38,9 +38,11 @@ class Xml extends AbstractDataTypeRdf
             'class' => 'value to-require xml xml-edit',
             'data-value-key' => '@value',
             /*
-            'placeholder' => '<oai_dcterms:dcterms>
-    <dcterms:title>Resource Description Framework (RDF)</dcterms:title>
-</oai_dcterms:dcterms>',
+            'placeholder' => <<<'XML'
+                <oai_dcterms:dcterms>
+                    <dcterms:title>Resource Description Framework (RDF)</dcterms:title>
+                </oai_dcterms:dcterms>
+                XML,
             */
         ]);
         return $view->formTextarea($element);

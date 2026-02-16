@@ -33,7 +33,7 @@
  */
 namespace DataTypeRdf;
 
-if (!class_exists(\Common\TraitModule::class)) {
+if (!class_exists('Common\TraitModule', false)) {
     require_once dirname(__DIR__) . '/Common/TraitModule.php';
 }
 

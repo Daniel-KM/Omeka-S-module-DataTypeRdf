@@ -23,7 +23,7 @@ class CkEditor extends AbstractHelper
     {
         static $loaded;
 
-        if (!is_null($loaded)) {
+        if ($loaded !== null) {
             return;
         }
 
