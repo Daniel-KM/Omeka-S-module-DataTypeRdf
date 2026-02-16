@@ -41,7 +41,9 @@ class CkEditor extends AbstractHelper
         $action = $params->fromRoute('action');
 
         // Check if module BlockPlus is available.
-        $hasBlockPlus = $plugins->has('pageMetadata');
+        // Use class_exists without autoloading: the class is loaded only if
+        // the module is active.
+        $hasBlockPlus = class_exists('BlockPlus\Module', false);
 
         $isSiteAdminPage = $isSiteAdmin
             && $hasBlockPlus
@@ -53,43 +55,74 @@ class CkEditor extends AbstractHelper
             && ($action === 'edit' || $action === 'add');
 
         $script = '';
+        $customConfigJs = 'js/ckeditor_config.js';
         if ($isSiteAdminPage || $isSiteAdminResource) {
             $setting = $plugins->get('setting');
             $pageOrResource = $isSiteAdminPage ? 'page' : 'resource';
             $module = $isSiteAdminPage ? 'blockplus' : 'datatyperdf';
             $htmlMode = $setting($module . '_html_mode_' . $pageOrResource);
             if ($htmlMode && $htmlMode !== 'inline') {
+                $escapedMode = $escapeJs($htmlMode);
                 $script = <<<JS
-CKEDITOR.config.customHtmlMode = '$htmlMode';
+                    CKEDITOR.config.customHtmlMode = '$escapedMode';
 
-JS;
+                    JS;
             }
 
             if ($hasBlockPlus) {
                 $htmlConfig = $setting($module . '_html_config_' . $pageOrResource);
-                $customConfigJs = $htmlConfig && $htmlConfig !== 'default'
-                    ? 'js/ckeditor_config_' . $htmlConfig . '.js'
-                    : 'js/ckeditor_config.js';
-                $customConfigUrl = $escapeJs($assetUrl($customConfigJs, 'BlockPlus'));
+                if ($htmlConfig && in_array($htmlConfig, ['standard', 'full'], true)) {
+                    $customConfigJs = 'js/ckeditor_config_' . $htmlConfig . '.js';
+                }
             }
         }
 
-        $customConfigUrl ??= $escapeJs($assetUrl('js/ckeditor_config.js', 'DataTypeRdf'));
+        // Use BlockPlus config files when available, otherwise DataTypeRdf's.
+        $customConfigModule = $hasBlockPlus ? 'BlockPlus' : 'DataTypeRdf';
+        $customConfigUrl = $escapeJs($assetUrl($customConfigJs, $customConfigModule));
 
         $script .= <<<JS
-CKEDITOR.config.customConfig = '$customConfigUrl';
-JS;
+            CKEDITOR.config.customConfig = '$customConfigUrl';
+            JS;
 
-        // The footnotes icon is not loaded automaically, so add css.
+        // Check if the footnotes plugin is available (requires external
+        // assets). Register it via addExternal so CKEditor knows where to
+        // find it, and gracefully degrade when missing.
+        $footnotesPluginPath = dirname(__DIR__, 3) . '/asset/vendor/ckeditor-footnotes/footnotes/plugin.js';
+        $hasFootnotes = file_exists($footnotesPluginPath);
+        if ($hasFootnotes) {
+            $footnotesUrl = $escapeJs($assetUrl('vendor/ckeditor-footnotes/footnotes/', 'DataTypeRdf'));
+            $script .= "\n" . <<<JS
+                CKEDITOR.plugins.addExternal('footnotes', '$footnotesUrl', 'plugin.js');
+                JS;
+        } else {
+            // Remove footnotes from extraPlugins to prevent CKEditor from
+            // failing to load the editor when the plugin is missing.
+            $script .= "\n" . <<<'JS'
+                CKEDITOR.on('instanceCreated', function(event) {
+                    var ep = event.editor.config.extraPlugins;
+                    if (typeof ep === 'string') {
+                        event.editor.config.extraPlugins = ep.replace(/,?footnotes/, '').replace(/^,/, '');
+                    } else if (Array.isArray(ep)) {
+                        event.editor.config.extraPlugins = ep.filter(function(p) { return p !== 'footnotes'; });
+                    }
+                });
+                JS;
+        }
+
+        // The footnotes icon is not loaded automatically, so add css.
         // Only this css rule is needed.
         // The js for data-type-rdf is already loaded with the data types.
         $view->headLink()
             ->appendStylesheet($assetUrl('css/data-type-rdf.css', 'DataTypeRdf'));
 
         $view->headScript()
-            // Don't use defer for now.
-            ->appendFile($assetUrl('vendor/ckeditor/ckeditor.js', 'Omeka'))
-            ->appendFile($assetUrl('vendor/ckeditor-footnotes/footnotes/plugin.js', 'DataTypeRdf'), 'text/javascript', ['defer' => 'defer'])
+            ->appendFile($assetUrl('vendor/ckeditor/ckeditor.js', 'Omeka'));
+        if ($hasFootnotes) {
+            $view->headScript()
+                ->appendFile($assetUrl('vendor/ckeditor-footnotes/footnotes/plugin.js', 'DataTypeRdf'), 'text/javascript', ['defer' => 'defer']);
+        }
+        $view->headScript()
             ->appendFile($assetUrl('vendor/ckeditor/adapters/jquery.js', 'Omeka'))
             ->appendScript($script);
     }
