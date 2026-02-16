@@ -49,8 +49,7 @@
     "extra": {
         "installer-name": "DataTypeRdf",
         "external-assets": {
-            "asset/vendor/ckeditor-footnotes/": "https://github.com/Daniel-KM/Omeka-S-module-DataTypeRdf/releases/download/3.4.14/CKEditorFootnotes-1.2.0-fix.tar.gz",
-            "asset/vendor/codemirror/": "https://codemirror.net/5/codemirror.zip"
+            "asset/vendor/ckeditor-footnotes/": "https://github.com/Daniel-KM/Omeka-S-module-DataTypeRdf/releases/download/3.4.14/CKEditorFootnotes-1.2.0-fix.tar.gz"
         }
     }
 }

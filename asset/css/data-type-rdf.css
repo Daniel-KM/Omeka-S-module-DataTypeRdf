@@ -80,31 +80,31 @@
         margin-top: 18px;
     }
 
-    [data-data-type="json"] .CodeMirror,
-    [data-data-type="xml"] .CodeMirror {
+    [data-data-type="json"] .cm-editor,
+    [data-data-type="xml"] .cm-editor {
         font-family: inherit;
         font-size: unset;
         height: 96px;
         border: 1px solid silver;
         min-height: 96px;
     }
-    [data-data-type="json"] .inputs .CodeMirror,
-    [data-data-type="xml"] .inputs .CodeMirror {
+    [data-data-type="json"] .inputs .cm-editor,
+    [data-data-type="xml"] .inputs .cm-editor {
         font-family: inherit;
         font-size: unset;
         height: 96px;
         line-height: normal;
     }
-    [data-data-type="json"] .CodeMirror pre.CodeMirror-line,
-    [data-data-type="xml"] .CodeMirror pre.CodeMirror-line {
+    [data-data-type="json"] .cm-editor .cm-line,
+    [data-data-type="xml"] .cm-editor .cm-line {
         line-height: normal;
     }
-    [data-data-type="json"] .CodeMirror-scroll,
-    [data-data-type="xml"] .CodeMirror-scroll {
+    [data-data-type="json"] .cm-scroller,
+    [data-data-type="xml"] .cm-scroller {
         min-height: 96px;
     }
-    [data-data-type="json"] .CodeMirror pre.CodeMirror-placeholder,
-    [data-data-type="xml"] .CodeMirror pre.CodeMirror-placeholder {
+    [data-data-type="json"] .cm-editor .cm-placeholder,
+    [data-data-type="xml"] .cm-editor .cm-placeholder {
         color: #999;
     }
 }

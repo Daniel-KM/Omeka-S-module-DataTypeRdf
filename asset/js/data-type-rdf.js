@@ -62,72 +62,24 @@
         /**
          * Json.
          *
-         * @see https://github.com/codemirror/codemirror5
+         * @see https://codemirror.net
          */
         else if (dataType === 'json') {
             const thisValue = $(value);
-            // Append the ckeditor.
             thisValue.find('.json-edit').each(function () {
-                var cm = CodeMirror.fromTextArea(this, {
-                    mode: "application/json",
-                    matchBrackets: true,
-                    autoCloseBrackets: true,
-                    showTrailingSpace: true,
-                    lineWrapping: true,
-                    lineNumbers: false,
-                    indentUnit: 4,
-                    undoDepth: 1000,
-                    autofocus: true,
-                    autoRefresh: true,
-                    /*
-                    height: 'auto',
-                    viewportMargin: Infinity,
-                    readOnly: window.location.href.includes('/show'),
-                    */
-                })
-                .on('change', cm => {
-                    cm.save();
-                });
+                window.OmekaDataTypeRdfEditor.create(this, {format: 'json', autofocus: true});
             });
         }
 
         /**
          * Xml.
          *
-         * @see https://github.com/codemirror/codemirror5
+         * @see https://codemirror.net
          */
         else if (dataType === 'xml') {
             const thisValue = $(value);
-            // Append the ckeditor.
             thisValue.find('.xml-edit').each(function () {
-                var cm = CodeMirror.fromTextArea(this, {
-                    mode: 'xml',
-                    matchTags: true,
-                    autoCloseTags: true,
-                    showTrailingSpace: true,
-                    lineWrapping: true,
-                    lineNumbers: false,
-                    indentUnit: 4,
-                    undoDepth: 1000,
-                    autofocus: true,
-                    autoRefresh: true,
-                    /*
-                    height: 'auto',
-                    viewportMargin: Infinity,
-                    extraKeys: {
-                        "'<'": completeAfter,
-                        "'/'": completeIfAfterLt,
-                        "' '": completeIfInTag,
-                        "'='": completeIfInTag,
-                        'Ctrl-Space': 'autocomplete'
-                    },
-                    hintOptions: {schemaInfo: tags},
-                    readOnly: window.location.href.includes('/show'),
-                    */
-                })
-                .on('change', cm => {
-                    cm.save();
-                });
+                window.OmekaDataTypeRdfEditor.create(this, {format: 'xml', autofocus: true});
             });
         }
 

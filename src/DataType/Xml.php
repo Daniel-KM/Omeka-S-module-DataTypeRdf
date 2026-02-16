@@ -28,21 +28,8 @@ class Xml extends AbstractDataTypeRdf
         $plugins = $view->getHelperPluginManager();
         $assetUrl = $plugins->get('assetUrl');
 
-        $view->headLink()
-            ->appendStylesheet($assetUrl('vendor/codemirror/lib/codemirror.css', 'DataTypeRdf'))
-            ->appendStylesheet($assetUrl('vendor/codemirror/addon/hint/show-hint.css', 'DataTypeRdf'));
         $view->headScript()
-            ->appendFile($assetUrl('vendor/codemirror/lib/codemirror.js', 'DataTypeRdf'))
-            // ->appendFile($assetUrl('vendor/codemirror/addon/display/placeholder.js', 'DataTypeRdf'))
-            // Required in resource form.
-            ->appendFile($assetUrl('vendor/codemirror/addon/display/autorefresh.js', 'DataTypeRdf'))
-            ->appendFile($assetUrl('vendor/codemirror/addon/edit/closetag.js', 'DataTypeRdf'))
-            ->appendFile($assetUrl('vendor/codemirror/addon/edit/matchtags.js', 'DataTypeRdf'))
-            ->appendFile($assetUrl('vendor/codemirror/addon/edit/trailingspace.js', 'DataTypeRdf'))
-            ->appendFile($assetUrl('vendor/codemirror/addon/fold/xml-fold.js', 'DataTypeRdf'))
-            ->appendFile($assetUrl('vendor/codemirror/addon/hint/show-hint.js', 'DataTypeRdf'))
-            ->appendFile($assetUrl('vendor/codemirror/addon/hint/xml-hint.js', 'DataTypeRdf'))
-            ->appendFile($assetUrl('vendor/codemirror/mode/xml/xml.js', 'DataTypeRdf'))
+            ->appendFile($assetUrl('js/codemirror-data-type-rdf.js', 'DataTypeRdf'))
             ->appendFile($assetUrl('js/data-type-rdf.js', 'DataTypeRdf'), 'text/javascript', ['defer' => 'defer']);
     }
 

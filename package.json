@@ -1,0 +1,17 @@
+{
+    "private": true,
+    "scripts": {
+        "build": "esbuild asset/js/codemirror-data-type-rdf.mjs --bundle --minify --outfile=asset/js/codemirror-data-type-rdf.js --format=iife"
+    },
+    "dependencies": {
+        "codemirror": "^6.0",
+        "@codemirror/lang-xml": "^6.0",
+        "@codemirror/lang-json": "^6.0",
+        "@codemirror/state": "^6.0",
+        "@codemirror/view": "^6.0",
+        "@codemirror/commands": "^6.0"
+    },
+    "devDependencies": {
+        "esbuild": "^0.20"
+    }
+}
