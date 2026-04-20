@@ -221,7 +221,7 @@ if ($totalNumerics) {
         while ($row = $stmt->fetchAssociative()) {
             try {
                 $date = \NumericDataTypes\DataType\Timestamp::getDateTimeFromValue($row['value']);
-            } catch (\Exception $e) {
+            } catch (\Throwable $e) {
                 $message = sprintf('For resource #%1$s, property #%2$s, the value "%3$s" cannot be converted into timestamp, but only to literal.',
                     $row['resource_id'], $row['property_id'], $row['value']);
                 $rowId = $row['id'];
