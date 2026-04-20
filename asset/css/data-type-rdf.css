@@ -80,6 +80,26 @@
         margin-top: 18px;
     }
 
+    /* Fix value-annotation layout in item stub sidebar. */
+    #sidebar-section-item-stub .value-annotation {
+        position: relative;
+    }
+    #sidebar-section-item-stub .value-annotation div[data-data-type] {
+        width: calc(100% - 30px);
+    }
+    #sidebar-section-item-stub .value-annotation div[data-data-type] > .input-footer {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 30px;
+    }
+    #sidebar-section-item-stub .value-annotation legend {
+        border-bottom: 0;
+    }
+    #sidebar-section-item-stub .cm-editor {
+        width: 100% !important;
+    }
+
     [data-data-type="json"] .cm-editor,
     [data-data-type="xml"] .cm-editor {
         font-family: inherit;
