@@ -13,7 +13,7 @@ class HtmlFactory implements FactoryInterface
      *
      * @return Html
      */
-    public function __invoke(ContainerInterface $services, $requestedName, array $options = null)
+    public function __invoke(ContainerInterface $services, $requestedName, ?array $options = null)
     {
         return new Html($services->get('Omeka\HtmlPurifier'));
     }
