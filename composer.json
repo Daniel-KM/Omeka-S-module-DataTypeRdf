@@ -29,7 +29,7 @@
     },
     "require": {
         "ext-xml": "*",
-        "sempia/external-assets": "^1.0"
+        "sempia/external-assets": "^1.1"
     },
     "autoload": {
         "psr-4": {
