@@ -37,7 +37,10 @@ class CkEditor extends AbstractHelper
 
         $isAdmin = $params->fromRoute('__ADMIN__');
         $isSiteAdmin = $params->fromRoute('__SITEADMIN__');
-        $controller = $params->fromRoute('__CONTROLLER__');
+        // DigitalObject and some other resources use a dedicated route that
+        // does not set "__CONTROLLER__", so fall back to "controller", whose
+        // value is then the full controller class.
+        $controller = $params->fromRoute('__CONTROLLER__') ?: $params->fromRoute('controller');
         $action = $params->fromRoute('action');
 
         // Check if module BlockPlus is available.
@@ -51,7 +54,7 @@ class CkEditor extends AbstractHelper
             && $action === 'edit';
 
         $isSiteAdminResource = $isAdmin
-            && in_array($controller, ['Item', 'ItemSet', 'Media', 'Annotation', 'item', 'item-set', 'media', 'annotation'])
+            && in_array($controller, ['Item', 'ItemSet', 'Media', 'Annotation', 'item', 'item-set', 'media', 'annotation', 'DigitalObject', 'digital-object', 'DigitalObject\Controller\Admin\DigitalObject'])
             && ($action === 'edit' || $action === 'add');
 
         $script = '';
