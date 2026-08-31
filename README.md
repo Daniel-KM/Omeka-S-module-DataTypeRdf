@@ -34,12 +34,21 @@ uncompress it in the `modules` directory.
 * From the source and for development
 
 If the module was installed from the source, rename the name of the folder of
-the module to `DataTypeRdf`.
+the module to `DataTypeRdf`, go to the root of the module, and run:
+
+```sh
+composer install --no-dev
+```
 
 Then install it like any other Omeka module and follow the config instructions.
 
+* Library CodeMirror
+
 The module uses [CodeMirror] 6 for the json and xml editors. The editor is
-bundled as a single JavaScript file. To rebuild it from source:
+bundled as a single JavaScript file `asset/js/codemirror-data-type-rdf.js`, that
+is versioned and packaged in the releases, so npm is not needed to install the
+module. It is required only to rebuild the editor from its source
+`asset/js/codemirror-data-type-rdf.mjs`:
 
 ```sh
 cd modules/DataTypeRdf
@@ -155,7 +164,7 @@ of the CeCILL license and that you accept its terms.
 
 - CKEditor 4 footnotes
 
-  One of the CKEditor ones [GPL]. See [CKEditor-Footnotes].
+  One of the CKEditor ones [GPL]. See [CKEditor Footnotes].
 
 - CodeMirror
 
@@ -171,6 +180,7 @@ Copyright
 * Copyright 2011-2026, Marijn Haverbeke & alii (library [CodeMirror])
 
 [Data Type RDF]: https://gitlab.com/Daniel-KM/Omeka-S-module-DataTypeRdf
+[DataTypeRdf.zip]: https://gitlab.com/Daniel-KM/Omeka-S-module-DataTypeRdf/-/releases
 [Omeka S]: https://omeka.org/s
 [Numeric Data Types]: https://github.com/omeka-s-modules/NumericDataTypes
 [RDF datatypes]: https://www.w3.org/TR/rdf11-concepts/#section-Datatypes
@@ -184,6 +194,7 @@ Copyright
 [module issues]: https://gitlab.com/Daniel-KM/Omeka-S-module-DataTypeRdf/-/issues
 [CeCILL v2.1]: https://www.cecill.info/licences/Licence_CeCILL_V2.1-en.html
 [GNU/GPL]: https://www.gnu.org/licenses/gpl-3.0.html
+[GPL]: https://www.gnu.org/licenses/gpl-3.0.html
 [FSF]: https://www.fsf.org
 [OSI]: http://opensource.org
 [MIT]: https://github.com/sandywalker/webui-popover/blob/master/LICENSE.txt
