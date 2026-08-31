@@ -1,14 +1,9 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-20 00:00+0000\n"
-"PO-Revision-Date: 2026-04-20 00:00+0000\n"
+"POT-Creation-Date: 2026-08-31 00:00+0000\n"
+"PO-Revision-Date: 2026-08-31 00:00+0000\n"
 "Last-Translator: Daniel Berthereau <Daniel.fr@Berthereau.net>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -17,15 +12,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.6\n"
 
-#: data/scripts/upgrade_from_rdfdatatype.php:277
+#: data/scripts/upgrade_from_rdfdatatype.php:316
 msgid "The module RdfDatatype was automatically uninstalled."
 msgstr "Le module RdfDatatype a été désinstallé automatiquement."
 
-#: data/scripts/upgrade_from_rdfdatatype.php:283
+#: data/scripts/upgrade_from_rdfdatatype.php:322
 msgid "The module RdfDatatype cannot be automatically uninstalled."
 msgstr "Le module RdfDatatype ne peut pas être automatiquement désinstallé."
 
-#: data/scripts/upgrade.php:29 Module.php:61
+#: data/scripts/upgrade.php:29 Module.php:78
 #, php-format
 msgid "The module %1$s should be upgraded to version %2$s or later."
 msgstr "Le module %1$s doit être mis à niveau à la version %2$s ou supérieure."
@@ -41,6 +36,122 @@ msgstr "faux"
 #: src/DataType/Boolean.php:35 src/DataType/Boolean.php:83
 msgid "true"
 msgstr "vrai"
+
+#: data/scripts/upgrade_from_rdfdatatype.php:46
+msgid "A total of {count} values in {total} resources will be updated."
+msgstr ""
+"Un total de {count} valeurs dans {total} ressources seront mises à jour."
+
+#: data/scripts/upgrade_from_rdfdatatype.php:98
+msgid ""
+"Some resources contain values with a data type that is not managed "
+"({data_types}). They will be converted into \"literal\"."
+msgstr ""
+"Certaines ressources contiennent des valeurs dont le type de données n’est "
+"pas géré ({data_types}). Elles seront converties en « littéral »."
+
+#: data/scripts/upgrade_from_rdfdatatype.php:107
+msgid ""
+"{count} date values with a time zone cannot be updated and will be converted "
+"into \"literal\"."
+msgstr ""
+"{count} valeurs de date associées à un fuseau horaire ne peuvent pas être "
+"mises à jour et seront converties en « littéral »."
+
+#: data/scripts/upgrade_from_rdfdatatype.php:118
+msgid "The list of resource ids with such values are: {ids}"
+msgstr "La liste des identifiants de ressources avec ces valeurs est : {ids}"
+
+#: data/scripts/upgrade_from_rdfdatatype.php:130
+msgid ""
+"Furthermore, the module Numeric Data Types is required to upgrade other data "
+"automatically: {data_types}"
+msgstr ""
+"De plus, le module Numéric Data Types est nécessaire pour mettre à jour "
+"automatiquement d’autres données : {data_types}"
+
+#: data/scripts/upgrade_from_rdfdatatype.php:138
+msgid ""
+"You should backup your database to keep these data safe, then you need to "
+"click on \"Install\" a second time to install the module. Of course, you "
+"should check your backup too."
+msgstr ""
+"Il est conseillé de sauvegarder la base de données pour préserver ces "
+"données, puis de cliquer une seconde fois sur « Installer » pour installer "
+"le module. Bien sûr, il est aussi recommandé de vérifier votre sauvegarde."
+
+#: data/scripts/upgrade_from_rdfdatatype.php:150
+msgid ""
+"The module Numeric Data Types is required to upgrade some data "
+"automatically: {data_types}"
+msgstr ""
+"Le module « Numeric Data Types » est nécessaire pour mettre à jour "
+"automatiquement certaines données : {data_types}"
+
+#: data/scripts/upgrade_from_rdfdatatype.php:157
+msgid "Processing upgrade of module RdfDatatype."
+msgstr "Mise à jour du module RdfDatatype en cours."
+
+#: data/scripts/upgrade_from_rdfdatatype.php:175
+msgid ""
+"Values with data types \"html\", \"xml\" and \"boolean\" were upgraded "
+"successfully."
+msgstr ""
+"Les valeurs de types « html », « xml » et « booléen » ont été mises à jour "
+"avec succès."
+
+#: data/scripts/upgrade_from_rdfdatatype.php:190
+msgid ""
+"Values with unmanaged data types were converted into \"literal\" "
+"successfully: {data_types}."
+msgstr ""
+"Les valeurs de types de données non gérés ont été converties en "
+"« littéraux » avec succès : {data_types}."
+
+#: data/scripts/upgrade_from_rdfdatatype.php:197
+msgid ""
+"Values with data types \"{data_types}\" were converted into \"literal\" "
+"successfully (no values)."
+msgstr ""
+"Les valeurs de type « {data_types} » ont été converties avec succès en "
+"« littéral » (aucune valeur)."
+
+#: data/scripts/upgrade_from_rdfdatatype.php:217
+msgid "Values with data type \"integer\" were upgraded successfully."
+msgstr "Les valeurs de type « entier » ont été mises à jour avec succès."
+
+#: data/scripts/upgrade_from_rdfdatatype.php:227
+msgid ""
+"Values with data type \"xsd:dateTime\" with a time zone were upgraded into "
+"\"literal\" successfully ({count})."
+msgstr ""
+"Les valeurs de type « xsd:dateTime » associées à un fuseau horaire ont été "
+"converties avec succès en « littéral » ({count})."
+
+#: data/scripts/upgrade_from_rdfdatatype.php:250
+msgid ""
+"For resource #{resource_id}, property #{property_id}, the value \"{value}\" "
+"cannot be converted into timestamp, but only to literal."
+msgstr ""
+"Pour la ressource #{resource_id}, propriété #{property_id}, la valeur "
+"« {value} » ne peut pas être convertie en horodatage, mais uniquement en "
+"littéral."
+
+#: data/scripts/upgrade_from_rdfdatatype.php:272
+msgid ""
+"An issue occurred when inserting data for resource #{resource_id}, property "
+"#{property_id} with value \"{value}\"."
+msgstr ""
+"Une erreur s’est produite lors de l’insertion des données pour la ressource "
+"#{resource_id}, propriété #{property_id} avec la valeur « {value} »."
+
+#: data/scripts/upgrade_from_rdfdatatype.php:288
+msgid ""
+"Values with data type \"{data_type}\" were upgraded into "
+"\"numeric:timestamp\" successfully."
+msgstr ""
+"Les valeurs de type « {data_type} » ont été converties avec succès en "
+"« numeric:timestamp »."
 
 #: data/scripts/upgrade.php:41
 msgid ""

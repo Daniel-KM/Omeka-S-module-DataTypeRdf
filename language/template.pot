@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-20 00:00+0000\n"
+"POT-Creation-Date: 2026-08-31 00:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,15 +17,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: data/scripts/upgrade_from_rdfdatatype.php:277
+#: data/scripts/upgrade_from_rdfdatatype.php:316
 msgid "The module RdfDatatype was automatically uninstalled."
 msgstr ""
 
-#: data/scripts/upgrade_from_rdfdatatype.php:283
+#: data/scripts/upgrade_from_rdfdatatype.php:322
 msgid "The module RdfDatatype cannot be automatically uninstalled."
 msgstr ""
 
-#: data/scripts/upgrade.php:29 Module.php:61
+#: data/scripts/upgrade.php:29 Module.php:78
 #, php-format
 msgid "The module %1$s should be upgraded to version %2$s or later."
 msgstr ""
@@ -40,6 +40,95 @@ msgstr ""
 
 #: src/DataType/Boolean.php:35 src/DataType/Boolean.php:83
 msgid "true"
+msgstr ""
+
+#: data/scripts/upgrade_from_rdfdatatype.php:46
+msgid "A total of {count} values in {total} resources will be updated."
+msgstr ""
+
+#: data/scripts/upgrade_from_rdfdatatype.php:98
+msgid ""
+"Some resources contain values with a data type that is not managed "
+"({data_types}). They will be converted into \"literal\"."
+msgstr ""
+
+#: data/scripts/upgrade_from_rdfdatatype.php:107
+msgid ""
+"{count} date values with a time zone cannot be updated and will be converted "
+"into \"literal\"."
+msgstr ""
+
+#: data/scripts/upgrade_from_rdfdatatype.php:118
+msgid "The list of resource ids with such values are: {ids}"
+msgstr ""
+
+#: data/scripts/upgrade_from_rdfdatatype.php:130
+msgid ""
+"Furthermore, the module Numeric Data Types is required to upgrade other data "
+"automatically: {data_types}"
+msgstr ""
+
+#: data/scripts/upgrade_from_rdfdatatype.php:138
+msgid ""
+"You should backup your database to keep these data safe, then you need to "
+"click on \"Install\" a second time to install the module. Of course, you "
+"should check your backup too."
+msgstr ""
+
+#: data/scripts/upgrade_from_rdfdatatype.php:150
+msgid ""
+"The module Numeric Data Types is required to upgrade some data "
+"automatically: {data_types}"
+msgstr ""
+
+#: data/scripts/upgrade_from_rdfdatatype.php:157
+msgid "Processing upgrade of module RdfDatatype."
+msgstr ""
+
+#: data/scripts/upgrade_from_rdfdatatype.php:175
+msgid ""
+"Values with data types \"html\", \"xml\" and \"boolean\" were upgraded "
+"successfully."
+msgstr ""
+
+#: data/scripts/upgrade_from_rdfdatatype.php:190
+msgid ""
+"Values with unmanaged data types were converted into \"literal\" "
+"successfully: {data_types}."
+msgstr ""
+
+#: data/scripts/upgrade_from_rdfdatatype.php:197
+msgid ""
+"Values with data types \"{data_types}\" were converted into \"literal\" "
+"successfully (no values)."
+msgstr ""
+
+#: data/scripts/upgrade_from_rdfdatatype.php:217
+msgid "Values with data type \"integer\" were upgraded successfully."
+msgstr ""
+
+#: data/scripts/upgrade_from_rdfdatatype.php:227
+msgid ""
+"Values with data type \"xsd:dateTime\" with a time zone were upgraded into "
+"\"literal\" successfully ({count})."
+msgstr ""
+
+#: data/scripts/upgrade_from_rdfdatatype.php:250
+msgid ""
+"For resource #{resource_id}, property #{property_id}, the value \"{value}\" "
+"cannot be converted into timestamp, but only to literal."
+msgstr ""
+
+#: data/scripts/upgrade_from_rdfdatatype.php:272
+msgid ""
+"An issue occurred when inserting data for resource #{resource_id}, property "
+"#{property_id} with value \"{value}\"."
+msgstr ""
+
+#: data/scripts/upgrade_from_rdfdatatype.php:288
+msgid ""
+"Values with data type \"{data_type}\" were upgraded into "
+"\"numeric:timestamp\" successfully."
 msgstr ""
 
 #: data/scripts/upgrade.php:41
