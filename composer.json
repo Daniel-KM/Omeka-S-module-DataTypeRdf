@@ -23,7 +23,7 @@
         "issues": "https://gitlab.com/Daniel-KM/Omeka-S-module-DataTypeRdf/-/issues",
         "forum": "https://forum.omeka.org/"
     },
-    "_require (not set until Omeka S merges PR #2412)": {
+    "_require (not set until Omeka S merges PR #2432)": {
         "omeka/omeka-s": "^4.0",
         "daniel-km/omeka-s-module-common": "*"
     },
@@ -49,7 +49,7 @@
     "extra": {
         "installer-name": "DataTypeRdf",
         "external-assets": {
-            "asset/vendor/ckeditor-footnotes/": "https://github.com/Daniel-KM/Omeka-S-module-DataTypeRdf/releases/download/3.4.14/CKEditorFootnotes-1.2.0-fix.tar.gz"
+            "asset/vendor/ckeditor-footnotes/": "https://gitlab.com/Daniel-KM/Omeka-S-module-DataTypeRdf/-/releases/3.4.18/downloads/CKEditorFootnotes-1.2.0-fix.tar.gz"
         }
     }
 }
