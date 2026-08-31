@@ -2,6 +2,8 @@
 
 namespace DataTypeRdf;
 
+use Common\Stdlib\PsrMessage;
+
 /**
  * @var Module $this
  * @var \Laminas\ServiceManager\ServiceLocatorInterface $services
@@ -40,8 +42,11 @@ $sql = <<<'SQL'
     WHERE type IN ("rdf:HTML", "rdf:XMLLiteral", "xsd:boolean", "xsd:date", "xsd:dateTime", "xsd:decimal", "xsd:gDay", "xsd:gMonth", "xsd:gMonthDay", "xsd:gYear", "xsd:gYearMonth", "xsd:integer", "xsd:time");
     SQL;
 $totalUsedResources = $connection->executeQuery($sql)->fetchOne();
-$message = sprintf('A total of %1$s values in %2$s resources will be updated.', $totalUsed, $totalUsedResources);
-$logger->notice($message);
+$message = new PsrMessage(
+    'A total of {count} values in {total} resources will be updated.', // @translate
+    ['count' => $totalUsed, 'total' => $totalUsedResources]
+);
+$logger->notice($message->getMessage(), $message->getContext());
 $messenger->addNotice($message);
 
 $numerics = [
@@ -89,28 +94,31 @@ if ($totalRemoveds || $totalTimeZonesUsed) {
             array_walk($messageCount, function (&$v, $k): void {
                 $v = "$k ($v)";
             });
-            $message = sprintf('Some resources contain values with a data type that is not managed (%s). They will be converted into "literal".',
-                implode(', ', $messageCount)
+            $message = new PsrMessage(
+                'Some resources contain values with a data type that is not managed ({data_types}). They will be converted into "literal".', // @translate
+                ['data_types' => implode(', ', $messageCount)]
             );
-            $logger->err($message);
+            $logger->err($message->getMessage(), $message->getContext());
             $messenger->addError($message);
         }
 
         if ($totalTimeZonesUsed) {
-            $message = sprintf('%d date values with a time zone cannot be updated and will be converted into "literal".',
-                $totalTimeZonesUsed
+            $message = new PsrMessage(
+                '{count} date values with a time zone cannot be updated and will be converted into "literal".', // @translate
+                ['count' => $totalTimeZonesUsed]
             );
-            $logger->err($message);
+            $logger->err($message->getMessage(), $message->getContext());
             $messenger->addError($message);
         }
 
         $datatypes = implode("', '", array_keys(array_filter($countRemoveds)));
         $sql = "SELECT DISTINCT(`resource_id`) FROM `value` WHERE `type` IN ('$datatypes') ORDER BY `resource_id` ASC;";
         $resourceIds = $connection->executeQuery($sql)->fetchFirstColumn();
-        $message = sprintf('The list of resource ids with such values are: %s',
-            implode(', ', $resourceIds)
+        $message = new PsrMessage(
+            'The list of resource ids with such values are: {ids}', // @translate
+            ['ids' => implode(', ', $resourceIds)]
         );
-        $logger->warn($message);
+        $logger->warn($message->getMessage(), $message->getContext());
         $messenger->addWarning($message);
 
         if ($totalNumerics && !$moduleNumericDataTypes) {
@@ -118,16 +126,18 @@ if ($totalRemoveds || $totalTimeZonesUsed) {
             array_walk($messageCount, function (&$v, $k): void {
                 $v = "$k ($v)";
             });
-            $message = sprintf('Furthermore, the module Numeric Data Types is required to upgrade other data automatically: %s',
-                implode(', ', $messageCount)
+            $message = new PsrMessage(
+                'Furthermore, the module Numeric Data Types is required to upgrade other data automatically: {data_types}', // @translate
+                ['data_types' => implode(', ', $messageCount)]
             );
-            $logger->warn($message);
+            $logger->warn($message->getMessage(), $message->getContext());
             $messenger->addWarning($message);
         }
 
-        throw new \Omeka\Module\Exception\ModuleCannotInstallException(
-            'You should backup your database to keep these data safe, then you need to click on "Install" a second time to install the module. Of course, you should check your backup too.'
+        $message = new PsrMessage(
+            'You should backup your database to keep these data safe, then you need to click on "Install" a second time to install the module. Of course, you should check your backup too.' // @translate
         );
+        throw new \Omeka\Module\Exception\ModuleCannotInstallException((string) $message);
     }
 }
 
@@ -136,14 +146,15 @@ if ($totalNumerics && !$moduleNumericDataTypes) {
     array_walk($messageCount, function (&$v, $k): void {
         $v = "$k ($v)";
     });
-    $message = sprintf('The module Numeric Data Types is required to upgrade some data automatically: %s',
-        implode(', ', $messageCount)
+    $message = new PsrMessage(
+        'The module Numeric Data Types is required to upgrade some data automatically: {data_types}', // @translate
+        ['data_types' => implode(', ', $messageCount)]
     );
-    $logger->warn($message);
-    throw new \Omeka\Module\Exception\ModuleCannotInstallException($message);
+    $logger->warn($message->getMessage(), $message->getContext());
+    throw new \Omeka\Module\Exception\ModuleCannotInstallException((string) $message);
 }
 
-$logger->notice('Processing upgrade of module RdfDatatype.');
+$logger->notice('Processing upgrade of module RdfDatatype.'); // @translate
 
 // Clean settings.
 $settings->delete('datatyperdf_flag_upgrade');
@@ -160,8 +171,10 @@ foreach ($map as $old => $new) {
     $connection->executeStatement($sql);
 }
 
-$message = 'Values with data types "html", "xml" and "boolean" were upgraded sucessfully.';
-$logger->notice($message);
+$message = new PsrMessage(
+    'Values with data types "html", "xml" and "boolean" were upgraded successfully.' // @translate
+);
+$logger->notice($message->getMessage(), $message->getContext());
 $messenger->addNotice($message);
 
 // Convert unmanaged data types to literal.
@@ -173,12 +186,18 @@ if ($totalRemoveds) {
     array_walk($messageCount, function (&$v, $k): void {
         $v = "$k ($v)";
     });
-    $message = sprintf('Values with unmanaged data types were converted into "literal" sucessfully: %s.', implode(', ', $messageCount));
-    $logger->warn($message);
+    $message = new PsrMessage(
+        'Values with unmanaged data types were converted into "literal" successfully: {data_types}.', // @translate
+        ['data_types' => implode(', ', $messageCount)]
+    );
+    $logger->warn($message->getMessage(), $message->getContext());
     $messenger->addWarning($message);
 } else {
-    $message = sprintf('Values with data types "%s" were converted into "literal" sucessfully (no values).', $olds);
-    $logger->notice($message);
+    $message = new PsrMessage(
+        'Values with data types "{data_types}" were converted into "literal" successfully (no values).', // @translate
+        ['data_types' => $olds]
+    );
+    $logger->notice($message->getMessage(), $message->getContext());
     $messenger->addNotice($message);
 }
 
@@ -194,16 +213,21 @@ if ($totalNumerics) {
     $sql = "UPDATE `value` SET `type` = 'numeric:integer' WHERE `type` = 'xsd:integer';";
     $connection->executeStatement($sql);
 
-    $message = 'Values with data type "integer" were upgraded sucessfully.';
-    $logger->notice($message);
+    $message = new PsrMessage(
+        'Values with data type "integer" were upgraded successfully.' // @translate
+    );
+    $logger->notice($message->getMessage(), $message->getContext());
     $messenger->addNotice($message);
 
     // Manage an exception when there is a timezone.
     if ($totalTimeZonesUsed) {
         $sql = "UPDATE `value` SET `type` = 'literal' WHERE `type` = 'xsd:dateTime' AND (`value` LIKE '%+%' OR `value` LIKE '%:%-%');";
         $connection->executeStatement($sql);
-        $message = sprintf('Values with data type "xsd:dateTime" with a time zone were upgraded into "literal" sucessfully (%d).', $totalTimeZonesUsed);
-        $logger->warn($message);
+        $message = new PsrMessage(
+            'Values with data type "xsd:dateTime" with a time zone were upgraded into "literal" successfully ({count}).', // @translate
+            ['count' => $totalTimeZonesUsed]
+        );
+        $logger->warn($message->getMessage(), $message->getContext());
         $messenger->addWarning($message);
     }
 
@@ -222,12 +246,18 @@ if ($totalNumerics) {
             try {
                 $date = \NumericDataTypes\DataType\Timestamp::getDateTimeFromValue($row['value']);
             } catch (\Throwable $e) {
-                $message = sprintf('For resource #%1$s, property #%2$s, the value "%3$s" cannot be converted into timestamp, but only to literal.',
-                    $row['resource_id'], $row['property_id'], $row['value']);
+                $message = new PsrMessage(
+                    'For resource #{resource_id}, property #{property_id}, the value "{value}" cannot be converted into timestamp, but only to literal.', // @translate
+                    [
+                        'resource_id' => $row['resource_id'],
+                        'property_id' => $row['property_id'],
+                        'value' => $row['value'],
+                    ]
+                );
                 $rowId = $row['id'];
                 $sql = "UPDATE `value` SET `type` = 'literal' WHERE `id` = '$rowId';";
                 $connection->executeStatement($sql);
-                $logger->err($message);
+                $logger->err($message->getMessage(), $message->getContext());
                 $messenger->addError($message);
                 continue;
             }
@@ -238,9 +268,15 @@ if ($totalNumerics) {
             ];
             $result = $connection->executeStatement($sqlInsert, $bind);
             if (!$result) {
-                $message = sprintf('An issue occurred when inserting data for resource #%1$s, property #%2$s with value "%3$s".',
-                    $row['resource_id'], $row['property_id'], $row['value']);
-                $logger->err($message);
+                $message = new PsrMessage(
+                    'An issue occurred when inserting data for resource #{resource_id}, property #{property_id} with value "{value}".', // @translate
+                    [
+                        'resource_id' => $row['resource_id'],
+                        'property_id' => $row['property_id'],
+                        'value' => $row['value'],
+                    ]
+                );
+                $logger->err($message->getMessage(), $message->getContext());
                 $messenger->addError($message);
             }
         }
@@ -248,8 +284,11 @@ if ($totalNumerics) {
         $sql = "UPDATE `value` SET `type` = 'numeric:timestamp' WHERE `type` = '$datatype';";
         $connection->executeStatement($sql);
 
-        $message = sprintf('Values with data type "%s" were upgraded into "numeric:timestamp" sucessfully.', $datatype);
-        $logger->notice($message);
+        $message = new PsrMessage(
+            'Values with data type "{data_type}" were upgraded into "numeric:timestamp" successfully.', // @translate
+            ['data_type' => $datatype]
+        );
+        $logger->notice($message->getMessage(), $message->getContext());
         $messenger->addNotice($message);
     }
 }
