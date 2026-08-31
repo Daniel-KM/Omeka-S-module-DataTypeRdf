@@ -110,12 +110,19 @@ class CkEditor extends AbstractHelper
             // failing to load the editor when the plugin is missing.
             $script .= "\n" . <<<'JS'
                 CKEDITOR.on('instanceCreated', function(event) {
-                    var ep = event.editor.config.extraPlugins;
-                    if (typeof ep === 'string') {
-                        event.editor.config.extraPlugins = ep.replace(/,?footnotes/, '').replace(/^,/, '');
-                    } else if (Array.isArray(ep)) {
-                        event.editor.config.extraPlugins = ep.filter(function(p) { return p !== 'footnotes'; });
-                    }
+                    event.editor.on('configLoaded', function() {
+                        var config = event.editor.config;
+                        var ep = config.extraPlugins;
+                        if (typeof ep === 'string') {
+                            config.extraPlugins = ep.split(',').filter(function(p) {
+                                return p.trim() !== 'footnotes';
+                            }).join(',');
+                        } else if (Array.isArray(ep)) {
+                            config.extraPlugins = ep.filter(function(p) {
+                                return p !== 'footnotes';
+                            });
+                        }
+                    });
                 });
                 JS;
         }
