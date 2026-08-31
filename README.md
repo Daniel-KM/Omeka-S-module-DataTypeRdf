@@ -191,7 +191,7 @@ Copyright
 [Common]: https://gitlab.com/Daniel-KM/Omeka-S-module-Common
 [CKEditor Footnotes]: https://github.com/andykirk/CKEditorFootnotes
 [CodeMirror]: https://codemirror.net
-[module issues]: https://gitlab.com/Daniel-KM/Omeka-S-module-DataTypeRdf/-/issues
+[module issues]: https://gitlab.com/Daniel-KM/Omeka-S-module-DataTypeRdf/-/work_items
 [CeCILL v2.1]: https://www.cecill.info/licences/Licence_CeCILL_V2.1-en.html
 [GNU/GPL]: https://www.gnu.org/licenses/gpl-3.0.html
 [GPL]: https://www.gnu.org/licenses/gpl-3.0.html
