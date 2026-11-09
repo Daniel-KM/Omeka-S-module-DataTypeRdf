@@ -1,14 +1,16 @@
 @media all {
     /* Footnotes (against core styles) */
-    section.footnotes header {
-        background-color: inherit;
-        width: auto;
-        min-height: initial;
-        text-align: initial;
-        padding: initial;
-        color: initial;
-    }
-    section.footnotes header h2 {
-        font-size: 16px;
+    section.footnotes {
+        & header {
+            background-color: inherit;
+            width: auto;
+            min-height: initial;
+            text-align: initial;
+            padding: initial;
+            color: initial;
+            & h2 {
+                font-size: 16px;
+            }
+        }
     }
 }

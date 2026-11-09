@@ -14,65 +14,81 @@
         content: "\f00c";
     }
 
-    .inputs .cke_textarea_inline {
-        resize: vertical;
-        line-height: 1.5;
-        background-color: #fff;
-        min-width: 0;
-    }
-    .inputs .value .cke_textarea_inline {
-        width: 100%;
-        margin: 0;
-    }
-    .inputs .value a.value-language ~ .cke_textarea_inline {
-        padding-left: 42px;
-    }
-    .inputs input[type="text"].value-language.active.active ~ .cke_textarea_inline {
-        padding-left: 6px;
-        border-top: 0;
+    .inputs {
+        & .cke_textarea_inline {
+            resize: vertical;
+            line-height: 1.5;
+            background-color: #fff;
+            min-width: 0;
+        }
+        & .value {
+            & .cke_textarea_inline {
+                width: 100%;
+                margin: 0;
+            }
+            & a.value-language ~ .cke_textarea_inline {
+                padding-left: 42px;
+            }
+        }
+        & input[type="text"].value-language.active.active ~ .cke_textarea_inline {
+            padding-left: 6px;
+            border-top: 0;
+        }
     }
 
     /* Footnotes (against core styles) */
-    section.footnotes header {
-        background-color: inherit;
-        width: auto;
-        min-height: initial;
-        text-align: initial;
-        padding: initial;
-        color: initial;
-    }
-    section.footnotes header h2 {
-        font-size: 16px;
+    section.footnotes {
+        & header {
+            background-color: inherit;
+            width: auto;
+            min-height: initial;
+            text-align: initial;
+            padding: initial;
+            color: initial;
+            & h2 {
+                font-size: 16px;
+            }
+        }
     }
     .cke_button_icon.cke_button__footnotes_icon {
         background-image: url("../vendor/ckeditor-footnotes/footnotes/icons/footnotes.png");
         background-size: auto;
     }
 
-    .inputs .value[data-data-type="boolean"] .input-body {
-        background-color: inherit;
-        text-align: center;
-    }
-    .inputs .value[data-data-type="boolean"] .input-body input[type=checkbox] {
-        vertical-align: middle;
-    }
-    .inputs .value[data-data-type="boolean"] .input-body label.radio-boolean {
-        margin-right: 1em;
+    .inputs {
+        & .value[data-data-type="boolean"] {
+            & .input-body {
+                background-color: inherit;
+                text-align: center;
+                & input[type=checkbox] {
+                    vertical-align: middle;
+                }
+                & label.radio-boolean {
+                    margin-right: 1em;
+                }
+            }
+        }
     }
 
-    #value-annotation-sidebar .sidebar-content .value-annotation .value[data-data-type="html"] {
-        display: block;
-    }
-    #value-annotation-sidebar .sidebar-content .value-annotation .value[data-data-type="html"] a.value-language {
-        width: 36px;
-        display: inline-block;
-    }
-    #value-annotation-sidebar .sidebar-content .value-annotation .value[data-data-type="html"] input.value-language{
-        width: calc( 100% - 36px );
-        display: inline-block;
-    }
-    #value-annotation-sidebar .sidebar-content .value-annotation .value[data-data-type="html"] .input-footer {
-        float: right;
+    #value-annotation-sidebar {
+        & .sidebar-content {
+            & .value-annotation {
+                & .value[data-data-type="html"] {
+                    display: block;
+                }
+                & .value[data-data-type="html"] a.value-language {
+                    width: 36px;
+                    display: inline-block;
+                }
+                & .value[data-data-type="html"] input.value-language {
+                    width: calc( 100% - 36px );
+                    display: inline-block;
+                }
+                & .value[data-data-type="html"] .input-footer {
+                    float: right;
+                }
+            }
+        }
     }
     .sidebar-content .value-annotation .value[data-data-type="boolean"] input[type=checkbox] {
         width: 100%;
@@ -81,23 +97,25 @@
     }
 
     /* Fix value-annotation layout in item stub sidebar. */
-    #sidebar-section-item-stub .value-annotation {
-        position: relative;
-    }
-    #sidebar-section-item-stub .value-annotation div[data-data-type] {
-        width: calc(100% - 30px);
-    }
-    #sidebar-section-item-stub .value-annotation div[data-data-type] > .input-footer {
-        position: absolute;
-        right: 0;
-        top: 0;
-        width: 30px;
-    }
-    #sidebar-section-item-stub .value-annotation legend {
-        border-bottom: 0;
-    }
-    #sidebar-section-item-stub .cm-editor {
-        width: 100% !important;
+    #sidebar-section-item-stub {
+        & .value-annotation {
+            position: relative;
+            & div[data-data-type] {
+                width: calc(100% - 30px);
+                & > .input-footer {
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    width: 30px;
+                }
+            }
+            & legend {
+                border-bottom: 0;
+            }
+        }
+        & .cm-editor {
+            width: 100% !important;
+        }
     }
 
     [data-data-type="json"] .cm-editor,
