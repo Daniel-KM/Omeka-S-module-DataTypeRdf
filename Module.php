@@ -82,7 +82,7 @@ class Module extends AbstractModule
         }
 
         if ($services->get('Omeka\ModuleManager')->getModule('RdfDatatype')) {
-            require_once __DIR__ . '/data/scripts/upgrade_from_rdfdatatype.php';
+            require __DIR__ . '/data/scripts/upgrade_from_rdfdatatype.php';
         }
     }
 
