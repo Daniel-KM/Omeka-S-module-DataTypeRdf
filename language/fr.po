@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-31 00:00+0000\n"
-"PO-Revision-Date: 2026-08-31 00:00+0000\n"
+"POT-Creation-Date: 2026-11-09 00:00+0000\n"
+"PO-Revision-Date: 2026-11-09 00:00+0000\n"
 "Last-Translator: Daniel Berthereau <Daniel.fr@Berthereau.net>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -198,8 +198,8 @@ msgid "Html edition config and toolbar for resources"
 msgstr "Configuration de l’éditeur html pour les ressources"
 
 #: src/DataType/AbstractDataTypeRdf.php:17
-msgid "Data Type RDF"
-msgstr "Data Type RDF"
+msgid "RDF"
+msgstr "RDF"
 
 #: src/DataType/Boolean.php:23 config/module.config.php:57
 msgid "Boolean"
@@ -216,6 +216,9 @@ msgstr "Xml"
 #: config/module.config.php:53
 msgid "Json"
 msgstr "Json"
+
+#~ msgid "Data Type RDF"
+#~ msgstr "Data Type RDF"
 
 #, php-format
 #~ msgid "This module requires the module \"%s\"."

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-31 00:00+0000\n"
+"POT-Creation-Date: 2026-11-09 00:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -169,7 +169,7 @@ msgid "Html edition config and toolbar for resources"
 msgstr ""
 
 #: src/DataType/AbstractDataTypeRdf.php:17
-msgid "Data Type RDF"
+msgid "RDF"
 msgstr ""
 
 #: src/DataType/Boolean.php:23 config/module.config.php:57
