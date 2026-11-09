@@ -14,7 +14,7 @@ abstract class AbstractDataTypeRdf extends AbstractDataType implements DataTypeW
 {
     public function getOptgroupLabel()
     {
-        return 'Data Type RDF'; // @translate
+        return 'RDF'; // @translate
     }
 
     public function prepareForm(PhpRenderer $view): void
